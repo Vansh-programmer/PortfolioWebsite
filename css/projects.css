@@ -1,0 +1,113 @@
+/* ============================================================
+   projects.css — Showcase / Projects Section
+   3-column card grid with image, overlay, tags, and links.
+============================================================ */
+
+.showcase-section { background: var(--color-sand); }
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+}
+@media (min-width: 48rem) { .projects-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 64rem) { .projects-grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* ── Card ───────────────────────────────────────────────────── */
+.project-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: box-shadow 0.35s, transform 0.35s;
+}
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+}
+
+/* ── Image area ─────────────────────────────────────────────── */
+.project-img-link { display: block; }
+
+.project-img-wrap {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--tint, var(--color-sand));
+}
+.project-img-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.project-card:hover .project-img-wrap img { transform: scale(1.05); }
+
+/* Hover overlay */
+.project-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: color-mix(in srgb, var(--color-ink) 70%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-paper);
+  font-size: 0.875rem;
+  opacity: 0;
+  transition: opacity 0.35s;
+}
+.project-card:hover .project-img-overlay { opacity: 1; }
+
+/* ── Text area ──────────────────────────────────────────────── */
+.project-info  { padding: 1.25rem 1.25rem 1.5rem; }
+
+.project-meta {
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 0.5rem;
+}
+.project-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--color-ink);
+  margin-bottom: 0.6rem;
+  line-height: 1.2;
+}
+.project-desc {
+  font-size: 0.875rem;
+  color: var(--color-ink-soft);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* ── Tag chips ──────────────────────────────────────────────── */
+.project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  padding: 0.2rem 0.6rem;
+  background: var(--color-sand);
+  border: 1px solid var(--color-line);
+  border-radius: 6px;
+  color: var(--color-ink-soft);
+}
+
+/* ── Links ──────────────────────────────────────────────────── */
+.project-links { display: flex; gap: 1rem; }
+
+.proj-link {
+  font-size: 0.8rem;
+  color: var(--color-ink-soft);
+  text-decoration: underline;
+  text-decoration-color: var(--color-line);
+  text-underline-offset: 3px;
+  transition: color 0.2s, text-decoration-color 0.2s;
+}
+.proj-link:hover {
+  color: var(--color-accent);
+  text-decoration-color: var(--color-accent);
+}

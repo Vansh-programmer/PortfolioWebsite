@@ -1,0 +1,74 @@
+/* ============================================================
+   reset.css — Base Reset & Body Styles
+   Normalises browser defaults and sets the page foundation.
+============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 72px;  /* offset for fixed header */
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  line-height: 1.625;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* Paper noise texture overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.28;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'160\' height=\'160\'%3E%3Cfilter id=\'n\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.85\' numOctaves=\'2\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23n)\' opacity=\'0.35\'/%3E%3C/svg%3E");
+}
+
+/* Game theme: no noise, scanlines instead */
+[data-theme="game"] body::before { opacity: 0; }
+[data-theme="game"] body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image: repeating-linear-gradient(#ffffff0a 0 1px, transparent 1px 3px);
+}
+
+/* Basics */
+img, svg    { display: block; max-width: 100%; }
+a           { color: inherit; text-decoration: none; }
+ul          { list-style: none; }
+button      { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+/* Accessibility: reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* Text selection */
+::selection { background: var(--color-accent); color: #fff; }
+
+/* Custom scrollbar */
+*      { scrollbar-width: thin; scrollbar-color: transparent transparent; }
+:hover { scrollbar-color: var(--color-line) transparent; }
+::-webkit-scrollbar       { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb {
+  border: 3px solid var(--color-paper);
+  background: transparent;
+  border-radius: 999px;
+}
+:hover::-webkit-scrollbar-thumb { background: var(--color-line); }

@@ -1,0 +1,69 @@
+/* ============================================================
+   variables.css — Design Tokens
+   All CSS custom properties + theme overrides live here.
+   Import this FIRST so every other file can use the vars.
+============================================================ */
+
+/* ── Default (Light) Theme ──────────────────────────────────── */
+:root {
+  /* Fonts */
+  --font-sans:    "Nunito", system-ui, sans-serif;
+  --font-display: "Fraunces", Georgia, serif;
+  --font-mono:    "JetBrains Mono", monospace;
+  --font-hand:    "Caveat", "Segoe Print", cursive;
+
+  /* Palette */
+  --color-paper:       #fff7ec;
+  --color-ink:         #2a1f3d;
+  --color-ink-soft:    #5b4d6e;
+  --color-muted:       #9a8fab;
+  --color-line:        #f0e3d3;
+  --color-card:        #fffdf9;
+  --color-accent:      #ff5a3c;
+  --color-accent-soft: #ffe4d8;
+  --color-sand:        #fdeede;
+  --color-forest:      #12b28c;
+  --color-sun:         #ffc542;
+  --color-berry:       #7c5cff;
+  --color-teal:        #16b8a6;
+  --color-bubble:      #ff7fb0;
+
+  /* Shared */
+  --radius: 20px;
+}
+
+/* ── Dark Theme ─────────────────────────────────────────────── */
+[data-theme="dark"] {
+  --color-paper:       #16121f;
+  --color-ink:         #f3eefb;
+  --color-ink-soft:    #b8adcf;
+  --color-muted:       #837a97;
+  --color-line:        #2c2740;
+  --color-card:        #1e1930;
+  --color-accent:      #ff6f52;
+  --color-accent-soft: #3a2318;
+  --color-sand:        #1c1729;
+  --color-forest:      #1ccaa0;
+  --color-sun:         #ffce5c;
+  --color-berry:       #9a7dff;
+  --color-teal:        #2fd6c2;
+  --color-bubble:      #ff8ebc;
+}
+
+/* ── Game Theme ─────────────────────────────────────────────── */
+[data-theme="game"] {
+  --color-paper:       #08060f;
+  --color-ink:         #eafffb;
+  --color-ink-soft:    #9fb4d8;
+  --color-muted:       #6a7aa0;
+  --color-line:        #1c2344;
+  --color-card:        #0f1330;
+  --color-accent:      #ff3d81;
+  --color-accent-soft: #2a0f22;
+  --color-sand:        #0c0f24;
+  --color-forest:      #21e6a8;
+  --color-sun:         #ffe23d;
+  --color-berry:       #8a5cff;
+  --color-teal:        #21e6c1;
+  --color-bubble:      #ff5fa8;
+}

@@ -1,0 +1,53 @@
+/* ============================================================
+   skills.css — Skills Section
+   Responsive 3-column grid of category cards with pill tags.
+============================================================ */
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+@media (min-width: 40rem) { .skills-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 64rem) { .skills-grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* ── Category card ──────────────────────────────────────────── */
+.skill-cat {
+  background: var(--color-card);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  transition: box-shadow 0.3s, border-color 0.3s;
+}
+.skill-cat:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 24px -8px var(--color-sun);
+}
+
+.skill-cat-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-ink);
+  letter-spacing: -0.01em;
+  margin-bottom: 1rem;
+}
+
+/* ── Pill tags ──────────────────────────────────────────────── */
+.skill-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+.pill {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-ink-soft);
+  background: var(--color-paper);
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+.pill:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+}

@@ -1,0 +1,190 @@
+/* ============================================================
+   hero.css — Hero Section
+   Full-screen intro with heading, photo, stats, and doodle.
+============================================================ */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 9rem 1.5rem 5rem;
+}
+@media (min-width: 64rem) {
+  .hero { padding: 11rem 2.5rem 5rem; }
+}
+
+/* ── Background blobs ───────────────────────────────────────── */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.blob-red {
+  width: 520px; height: 520px;
+  top: -6rem; right: -10rem;
+  background: radial-gradient(closest-side, rgba(255,90,60,0.18), transparent);
+  opacity: 0.6;
+  filter: blur(64px);
+}
+.blob-purple {
+  width: 380px; height: 380px;
+  top: 10rem; left: -8rem;
+  background: radial-gradient(closest-side, rgba(124,92,255,0.16), transparent);
+  opacity: 0.7;
+  filter: blur(64px);
+}
+
+/* ── Two-column grid ────────────────────────────────────────── */
+.hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+@media (min-width: 64rem) {
+  .hero-inner {
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 4rem;
+  }
+}
+
+/* ── Eyebrow line ───────────────────────────────────────────── */
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 1.5rem;
+}
+.eyebrow-line {
+  display: inline-block;
+  width: 2rem; height: 1px;
+  background: var(--color-line);
+}
+
+/* ── Main heading ───────────────────────────────────────────── */
+.hero-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 300;
+  line-height: 1.03;
+  letter-spacing: -0.025em;
+  color: var(--color-ink);
+  margin-bottom: 2rem;
+}
+.hero-heading em { font-style: italic; }
+
+/* ── Sub-text paragraph ─────────────────────────────────────── */
+.hero-subtext {
+  font-size: 1.1rem;
+  line-height: 1.65;
+  color: var(--color-ink-soft);
+  max-width: 540px;
+  margin-bottom: 2rem;
+}
+
+/* ── CTA row ────────────────────────────────────────────────── */
+.hero-cta {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-bottom: 3.5rem;
+}
+
+/* ── Stats strip ────────────────────────────────────────────── */
+.hero-stats {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  border-top: 1px dashed var(--color-line);
+  padding-top: 2rem;
+}
+.stat         { display: flex; align-items: baseline; gap: 0.6rem; }
+.stat-val     { font-family: var(--font-display); font-size: 1.875rem; color: var(--color-ink); }
+.stat-label   { font-size: 0.8rem; color: var(--color-muted); }
+.stat-sep     { color: var(--color-accent); font-size: 0.8rem; }
+
+/* ── Photo column ───────────────────────────────────────────── */
+.hero-photo {
+  position: relative;
+  max-width: 380px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Handwritten "that's me" label (desktop only) */
+.photo-label {
+  position: absolute;
+  top: -2rem; left: -1.5rem;
+  z-index: 10;
+  display: none;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 1.4rem;
+  color: var(--color-ink-soft);
+  transform: rotate(-6deg);
+}
+@media (min-width: 64rem) {
+  .photo-label { display: flex; }
+}
+
+/* Tilted photo card */
+.photo-frame {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: 6px;
+  border: 6px solid var(--color-card);
+  overflow: hidden;
+  box-shadow: 0 18px 50px -18px rgba(23, 22, 15, 0.5);
+  background-color: var(--color-sand);
+  transform: rotate(2deg);
+  transition: transform 0.5s cubic-bezier(0, 0, 0.2, 1);
+}
+.photo-frame:hover           { transform: rotate(0deg); }
+.photo-frame img             { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
+.photo-frame:hover img       { transform: scale(1.04); }
+
+/* "open to work" badge */
+.open-badge {
+  position: absolute;
+  bottom: -1.25rem; left: -1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--color-forest);
+  color: var(--color-paper);
+  border-radius: 8px;
+  padding: 0.35rem 1rem;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  transform: rotate(-3deg);
+}
+.badge-dot {
+  width: 8px; height: 8px;
+  background: #8fd19e;
+  border-radius: 50%;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ── Arrow doodle ───────────────────────────────────────────── */
+.hero-doodle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 3.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: var(--color-ink-soft);
+}
+.doodle-label {
+  font-size: 1.4rem;
+  color: var(--color-ink-soft);
+  transform: rotate(3deg) translateX(-2.5rem);
+}

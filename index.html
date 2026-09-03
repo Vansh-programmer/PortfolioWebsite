@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Vansh Programmer — full-stack developer building fast, reliable web apps with the MERN stack." />
+  <title>Vansh Programmer — Full-Stack Developer</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=Nunito:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Caveat:wght@500;600&display=swap" rel="stylesheet" />
+
+  <!--
+    ┌──────────────────────────────────────────────────────────┐
+    │  CSS — one file per concern, imported in order           │
+    │                                                          │
+    │  variables.css    → design tokens (colors, fonts)        │
+    │  reset.css        → browser normalisation                │
+    │  utilities.css    → helpers, animations, shared classes  │
+    │  navbar.css       → fixed header + mobile drawer         │
+    │  hero.css         → hero section                         │
+    │  about.css        → about section                        │
+    │  skills.css       → skills grid                          │
+    │  projects.css     → projects / showcase section          │
+    │  certificates.css → certificates gallery                 │
+    │  contact.css      → contact info + form                  │
+    │  footer.css       → site footer                          │
+    └──────────────────────────────────────────────────────────┘
+  -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/utilities.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/hero.css" />
+  <link rel="stylesheet" href="css/about.css" />
+  <link rel="stylesheet" href="css/skills.css" />
+  <link rel="stylesheet" href="css/projects.css" />
+  <link rel="stylesheet" href="css/certificates.css" />
+  <link rel="stylesheet" href="css/contact.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+</head>
+<body>
+
+  <!-- Scroll progress bar (filled by parallax.js) -->
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       NAVBAR
+  ══════════════════════════════════════════════════════════ -->
+  <header class="site-header" id="site-header">
+    <nav class="nav-inner">
+
+      <!-- Logo -->
+      <a href="#top" class="nav-logo">Vansh&nbsp;Programmer<span class="logo-dot">.</span></a>
+
+      <!-- Desktop links -->
+      <div class="nav-links" id="navLinks">
+        <a href="#about"        class="nav-link" data-section="about">About</a>
+        <a href="#skills"       class="nav-link" data-section="skills">Skills</a>
+        <a href="#showcase"     class="nav-link" data-section="showcase">Work</a>
+        <a href="#certificates" class="nav-link" data-section="certificates">Certificates</a>
+
+        <!-- Theme switcher -->
+        <div class="theme-switcher" role="group" aria-label="Theme mode">
+          <button class="theme-btn active" data-theme="light" title="Light mode" aria-pressed="true">☀</button>
+          <button class="theme-btn"        data-theme="dark"  title="Dark mode"  aria-pressed="false">☾</button>
+          <button class="theme-btn"        data-theme="game"  title="Game mode"  aria-pressed="false">🎮</button>
+        </div>
+
+        <a href="#contact" class="nav-cta">Get in touch</a>
+      </div>
+
+      <!-- Mobile: theme switcher + hamburger -->
+      <div class="nav-mobile-controls">
+        <div class="theme-switcher" role="group" aria-label="Theme mode">
+          <button class="theme-btn active" data-theme="light" title="Light mode" aria-pressed="true">☀</button>
+          <button class="theme-btn"        data-theme="dark"  title="Dark mode"  aria-pressed="false">☾</button>
+          <button class="theme-btn"        data-theme="game"  title="Game mode"  aria-pressed="false">🎮</button>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+          <span class="ham-bar"></span>
+          <span class="ham-bar"></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile slide-down drawer (hidden by default) -->
+    <div class="mobile-drawer" id="mobileDrawer" hidden>
+      <a href="#about"        class="mobile-link">About</a>
+      <a href="#skills"       class="mobile-link">Skills</a>
+      <a href="#showcase"     class="mobile-link">Work</a>
+      <a href="#certificates" class="mobile-link">Certificates</a>
+      <a href="#contact"      class="mobile-link mobile-cta">Get in touch</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ══════════════════════════════════════════════════════════
+         HERO
+    ══════════════════════════════════════════════════════════ -->
+    <section id="top" class="hero">
+
+      <!-- Background blobs (CSS-animated, JS-parallaxed) -->
+      <div class="blob blob-red"    aria-hidden="true"></div>
+      <div class="blob blob-purple" aria-hidden="true"></div>
+
+      <div class="hero-inner">
+
+        <!-- ── Left: text ──────────────────────────────── -->
+        <div class="hero-text">
+          <p class="hero-eyebrow reveal">
+            <span class="hand text-accent">hey there —</span>
+            <span class="eyebrow-line"></span>
+            Full-Stack Developer
+          </p>
+
+          <h1 class="hero-heading reveal">
+            I'm Vansh. I build<em> web apps</em> that
+            <span class="ink-underline"> actually ship</span>
+            — schema to the last pixel.
+          </h1>
+
+          <p class="hero-subtext reveal">
+            I've spent the last few years living in the MERN stack — React up front,
+            Node &amp; Express behind it, Mongo underneath. I like the unglamorous
+            parts: sane data models, auth you can trust, and the small details nobody
+            notices until they're missing.
+          </p>
+
+          <div class="hero-cta reveal">
+            <a href="#showcase" class="btn-primary">
+              View work <span class="btn-arrow">→</span>
+            </a>
+            <a href="#contact" class="btn-text">Download résumé ↗</a>
+          </div>
+
+          <div class="hero-stats reveal" aria-label="Quick facts">
+            <div class="stat">
+              <span class="stat-val">10+</span>
+              <span class="stat-label">projects built</span>
+            </div>
+            <span class="stat-sep" aria-hidden="true">✦</span>
+            <div class="stat">
+              <span class="stat-val">MERN</span>
+              <span class="stat-label">day-to-day stack</span>
+            </div>
+            <span class="stat-sep" aria-hidden="true">✦</span>
+            <div class="stat">
+              <span class="stat-val">∞</span>
+              <span class="stat-label">cups of chai</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Right: photo ────────────────────────────── -->
+        <div class="hero-photo reveal from-right">
+          <span class="hand photo-label" aria-hidden="true">
+            that's me
+            <svg width="54" height="40" viewBox="0 0 54 40" fill="none" aria-hidden="true">
+              <path d="M4 4c8 18 22 28 44 30" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round"/>
+              <path d="M40 28l8 6-2-10" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+
+          <div class="photo-frame">
+            <img
+              src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=900&h=1125&fit=crop&auto=format&q=80"
+              alt="Vansh Programmer, full-stack developer"
+              loading="eager"
+              fetchpriority="high"
+            />
+          </div>
+
+          <div class="open-badge hand">
+            <span class="badge-dot" aria-hidden="true"></span>
+            open to work
+          </div>
+        </div>
+
+      </div><!-- /hero-inner -->
+
+      <!-- Arrow doodle -->
+      <div class="hero-doodle reveal" aria-hidden="true">
+        <span class="hand doodle-label">the work, this way</span>
+        <svg viewBox="0 0 90 140" width="90" height="140"
+             fill="none" stroke="currentColor"
+             stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M45 4C22 24 74 44 46 66S16 100 48 118" stroke-dasharray="1 10"/>
+          <path d="M40 108l8 13 10-11"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         ABOUT
+    ══════════════════════════════════════════════════════════ -->
+    <section id="about" class="section about-section">
+      <div class="container">
+        <p class="section-label reveal">About</p>
+
+        <div class="about-grid">
+
+          <!-- Text + experience -->
+          <div class="about-text reveal">
+            <h2 class="section-heading">
+              A developer who cares about the <span class="marker">whole product</span>.
+            </h2>
+            <p>
+              I'm a full-stack developer who enjoys turning ideas into fast, reliable web apps —
+              from database schema design all the way to a polished, accessible interface.
+            </p>
+            <p>
+              I build with the MERN stack (MongoDB, Express, React, Node) and care deeply about
+              clean architecture, secure authentication, and shipping to production.
+            </p>
+
+            <div class="experience-list">
+              <div class="exp-item">
+                <p class="exp-role">Full-Stack Developer</p>
+                <p class="exp-org">Freelance &amp; Personal Projects</p>
+                <p class="exp-period">2023 — Present</p>
+              </div>
+              <div class="exp-item">
+                <p class="exp-role">Web Development Bootcamp</p>
+                <p class="exp-org">The Web Developer Course</p>
+                <p class="exp-period">2023</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Photo card -->
+          <div class="about-visual reveal from-right" aria-hidden="true">
+            <div class="about-card">
+              <div class="about-photo-wrap">
+                <img
+                  src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=500&fit=crop&auto=format&q=75"
+                  alt="Coding setup"
+                  loading="lazy"
+                />
+              </div>
+              <div class="about-tag hand">currently learning</div>
+            </div>
+          </div>
+
+        </div><!-- /about-grid -->
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         SKILLS
+    ══════════════════════════════════════════════════════════ -->
+    <section id="skills" class="section">
+      <div class="container">
+        <p class="section-label reveal">Skills</p>
+        <h2 class="section-heading reveal">Everything I reach for <em>on the job</em>.</h2>
+
+        <div class="skills-grid">
+
+          <div class="skill-cat reveal">
+            <h3 class="skill-cat-title">Languages &amp; Fundamentals</h3>
+            <div class="skill-pills">
+              <span class="pill">HTML5</span>
+              <span class="pill">CSS3</span>
+              <span class="pill">JavaScript (ES6+)</span>
+              <span class="pill">Responsive Design</span>
+              <span class="pill">Flexbox</span>
+            </div>
+          </div>
+
+          <div class="skill-cat reveal">
+            <h3 class="skill-cat-title">Front-End</h3>
+            <div class="skill-pills">
+              <span class="pill">React</span>
+              <span class="pill">Single Page Apps</span>
+              <span class="pill">AJAX &amp; Async JS</span>
+              <span class="pill">DOM Manipulation</span>
+              <span class="pill">Bootstrap 5</span>
+              <span class="pill">Bulma</span>
+              <span class="pill">Semantic UI</span>
+            </div>
+          </div>
+
+          <div class="skill-cat reveal">
+            <h3 class="skill-cat-title">Back-End &amp; APIs</h3>
+            <div class="skill-pills">
+              <span class="pill">Node.js</span>
+              <span class="pill">Express</span>
+              <span class="pill">REST APIs</span>
+              <span class="pill">Templating (EJS)</span>
+              <span class="pill">NPM</span>
+            </div>
+          </div>
+
+          <div class="skill-cat reveal">
+            <h3 class="skill-cat-title">Databases</h3>
+            <div class="skill-pills">
+              <span class="pill">MongoDB</span>
+              <span class="pill">Mongoose</span>
+              <span class="pill">SQL vs NoSQL</span>
+              <span class="pill">Schema Design</span>
+              <span class="pill">Associations</span>
+              <span class="pill">Cloud Databases</span>
+            </div>
+          </div>
+
+          <div class="skill-cat reveal">
+            <h3 class="skill-cat-title">Auth &amp; Security</h3>
+            <div class="skill-pills">
+              <span class="pill">Auth from Scratch</span>
+              <span class="pill">Cookies &amp; Sessions</span>
+              <span class="pill">Authorization</span>
+              <span class="pill">SQL Injection / XSS defense</span>
+            </div>
+          </div>
+
+          <div class="skill-cat reveal">
+            <h3 class="skill-cat-title">Tooling &amp; Delivery</h3>
+            <div class="skill-pills">
+              <span class="pill">Unix / CLI</span>
+              <span class="pill">Git &amp; GitHub</span>
+              <span class="pill">Deploying Apps</span>
+              <span class="pill">Postman</span>
+              <span class="pill">Best Practices</span>
+            </div>
+          </div>
+
+        </div><!-- /skills-grid -->
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         PROJECTS / SHOWCASE
+    ══════════════════════════════════════════════════════════ -->
+    <section id="showcase" class="section showcase-section">
+      <div class="container">
+        <p class="section-label reveal">Work</p>
+        <h2 class="section-heading reveal">Things I've <em>actually shipped</em>.</h2>
+      </div>
+
+      <div class="projects-grid container">
+
+        <article class="project-card reveal" style="--tint:#eae6dc">
+          <a href="#" class="project-img-link" target="_blank" rel="noopener noreferrer">
+            <div class="project-img-wrap">
+              <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=700&h=840&fit=crop&auto=format&q=75" alt="Blog Application" loading="lazy" />
+              <div class="project-img-overlay"><span>Open case study ↗</span></div>
+            </div>
+          </a>
+          <div class="project-info">
+            <p class="project-meta font-mono">Full-Stack App — 2025</p>
+            <h3 class="project-title">Blog Application</h3>
+            <p class="project-desc">Full-stack blog built with Node.js, Express, and MongoDB. Features user auth, CRUD posts, comments, and cloud deployment.</p>
+            <div class="project-tags">
+              <span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">MongoDB</span><span class="tag">EJS</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="proj-link">GitHub ↗</a>
+              <a href="#" class="proj-link">Live demo ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card reveal" style="--tint:#e7ded4">
+          <a href="#" class="project-img-link" target="_blank" rel="noopener noreferrer">
+            <div class="project-img-wrap">
+              <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=700&h=840&fit=crop&auto=format&q=75" alt="YelpCamp Clone" loading="lazy" />
+              <div class="project-img-overlay"><span>Open case study ↗</span></div>
+            </div>
+          </a>
+          <div class="project-info">
+            <p class="project-meta font-mono">Full-Stack App — 2024</p>
+            <h3 class="project-title">YelpCamp Clone</h3>
+            <p class="project-desc">Yelp-like campground review app with full authentication, image uploads, maps integration, and complex data associations.</p>
+            <div class="project-tags">
+              <span class="tag">Express</span><span class="tag">MongoDB</span><span class="tag">Passport.js</span><span class="tag">Mapbox</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="proj-link">GitHub ↗</a>
+              <a href="#" class="proj-link">Live demo ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card reveal" style="--tint:#dfe4e2">
+          <a href="#" class="project-img-link" target="_blank" rel="noopener noreferrer">
+            <div class="project-img-wrap">
+              <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=700&h=840&fit=crop&auto=format&q=75" alt="Animated Todo List" loading="lazy" />
+              <div class="project-img-overlay"><span>Open case study ↗</span></div>
+            </div>
+          </a>
+          <div class="project-info">
+            <p class="project-meta font-mono">Frontend — 2024</p>
+            <h3 class="project-title">Animated Todo List</h3>
+            <p class="project-desc">Beautiful animated todo list with smooth CSS transitions, local storage persistence, and a clean minimal UI built in vanilla JavaScript.</p>
+            <div class="project-tags">
+              <span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span><span class="tag">LocalStorage</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="proj-link">GitHub ↗</a>
+              <a href="#" class="proj-link">Live demo ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card reveal" style="--tint:#e6e0ea">
+          <a href="#" class="project-img-link" target="_blank" rel="noopener noreferrer">
+            <div class="project-img-wrap">
+              <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=700&h=840&fit=crop&auto=format&q=75" alt="Photographer Portfolio" loading="lazy" />
+              <div class="project-img-overlay"><span>Open case study ↗</span></div>
+            </div>
+          </a>
+          <div class="project-info">
+            <p class="project-meta font-mono">Landing Page — 2024</p>
+            <h3 class="project-title">Photographer Portfolio</h3>
+            <p class="project-desc">Stunning, fully responsive photographer's portfolio with masonry gallery, lightbox, and smooth parallax scrolling effects.</p>
+            <div class="project-tags">
+              <span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span><span class="tag">Bootstrap</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="proj-link">GitHub ↗</a>
+              <a href="#" class="proj-link">Live demo ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card reveal" style="--tint:#e3e7dc">
+          <a href="#" class="project-img-link" target="_blank" rel="noopener noreferrer">
+            <div class="project-img-wrap">
+              <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=700&h=840&fit=crop&auto=format&q=75" alt="Startup Landing Page" loading="lazy" />
+              <div class="project-img-overlay"><span>Open case study ↗</span></div>
+            </div>
+          </a>
+          <div class="project-info">
+            <p class="project-meta font-mono">Landing Page — 2023</p>
+            <h3 class="project-title">Startup Landing Page</h3>
+            <p class="project-desc">Responsive startup landing page with hero section, feature cards, pricing table, testimonials, and newsletter signup with form validation.</p>
+            <div class="project-tags">
+              <span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">Bootstrap 5</span><span class="tag">Forms</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="proj-link">GitHub ↗</a>
+              <a href="#" class="proj-link">Live demo ↗</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card reveal" style="--tint:#e8e5dd">
+          <a href="#" class="project-img-link" target="_blank" rel="noopener noreferrer">
+            <div class="project-img-wrap">
+              <img src="https://images.unsplash.com/photo-1517842645767-c639042777db?w=700&h=840&fit=crop&auto=format&q=75" alt="JS Browser Game" loading="lazy" />
+              <div class="project-img-overlay"><span>Open case study ↗</span></div>
+            </div>
+          </a>
+          <div class="project-info">
+            <p class="project-meta font-mono">Frontend — 2023</p>
+            <h3 class="project-title">JS Browser Game</h3>
+            <p class="project-desc">Interactive browser-based game with game loop, collision detection, score tracking, and responsive controls — pure vanilla JS.</p>
+            <div class="project-tags">
+              <span class="tag">JavaScript</span><span class="tag">Canvas API</span><span class="tag">DOM API</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="proj-link">GitHub ↗</a>
+              <a href="#" class="proj-link">Live demo ↗</a>
+            </div>
+          </div>
+        </article>
+
+      </div><!-- /projects-grid -->
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         CERTIFICATES
+    ══════════════════════════════════════════════════════════ -->
+    <section id="certificates" class="section cert-section">
+      <div class="container">
+        <p class="section-label reveal">Certificates</p>
+        <h2 class="section-heading reveal">Always <em>learning</em>.</h2>
+
+        <div class="certs-grid">
+
+          <div class="cert-card reveal" style="--tint:#efe9df">
+            <div class="cert-img-wrap">
+              <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&h=425&fit=crop&auto=format&q=70" alt="" loading="lazy" />
+            </div>
+            <div class="cert-info">
+              <p class="cert-issuer">Udemy</p>
+              <p class="cert-title">The Web Developer Bootcamp 2024</p>
+              <p class="cert-year">2024</p>
+            </div>
+          </div>
+
+          <div class="cert-card reveal" style="--tint:#e8e2ea">
+            <div class="cert-img-wrap">
+              <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=600&h=425&fit=crop&auto=format&q=70" alt="" loading="lazy" />
+            </div>
+            <div class="cert-info">
+              <p class="cert-issuer">freeCodeCamp</p>
+              <p class="cert-title">Responsive Web Design Certification</p>
+              <p class="cert-year">2024</p>
+            </div>
+          </div>
+
+          <div class="cert-card reveal" style="--tint:#e2e8ea">
+            <div class="cert-img-wrap">
+              <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=425&fit=crop&auto=format&q=70" alt="" loading="lazy" />
+            </div>
+            <div class="cert-info">
+              <p class="cert-issuer">freeCodeCamp</p>
+              <p class="cert-title">JavaScript Algorithms &amp; Data Structures</p>
+              <p class="cert-year">2023</p>
+            </div>
+          </div>
+
+          <div class="cert-card reveal" style="--tint:#eee7dd">
+            <div class="cert-img-wrap">
+              <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600&h=425&fit=crop&auto=format&q=70" alt="" loading="lazy" />
+            </div>
+            <div class="cert-info">
+              <p class="cert-issuer">The Odin Project</p>
+              <p class="cert-title">Full Stack JavaScript Path</p>
+              <p class="cert-year">2023</p>
+            </div>
+          </div>
+
+          <div class="cert-card reveal" style="--tint:#e6e8de">
+            <div class="cert-img-wrap">
+              <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&h=425&fit=crop&auto=format&q=70" alt="" loading="lazy" />
+            </div>
+            <div class="cert-info">
+              <p class="cert-issuer">Coursera</p>
+              <p class="cert-title">Google IT Support Professional Certificate</p>
+              <p class="cert-year">2023</p>
+            </div>
+          </div>
+
+          <div class="cert-card reveal" style="--tint:#e4e6e9">
+            <div class="cert-img-wrap">
+              <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=425&fit=crop&auto=format&q=70" alt="" loading="lazy" />
+            </div>
+            <div class="cert-info">
+              <p class="cert-issuer">GitHub</p>
+              <p class="cert-title">GitHub Foundations Certification</p>
+              <p class="cert-year">2022</p>
+            </div>
+          </div>
+
+        </div><!-- /certs-grid -->
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════
+         CONTACT
+    ══════════════════════════════════════════════════════════ -->
+    <section id="contact" class="section contact-section">
+      <div class="container">
+        <p class="section-label reveal">Contact</p>
+        <h2 class="section-heading reveal">Let's <em>build something</em> together.</h2>
+
+        <div class="contact-grid">
+
+          <!-- Info links -->
+          <div class="contact-info reveal">
+            <p class="contact-lead">
+              I'm currently <strong>open to new opportunities</strong>. Whether you have a
+              project in mind, a question, or just want to say hi — my inbox is always open!
+            </p>
+            <div class="contact-items">
+              <a href="mailto:vansh@example.com" class="contact-item">
+                <span class="ci-icon">✉</span>
+                <div>
+                  <span class="ci-label">Email</span>
+                  <span class="ci-val">vansh@example.com</span>
+                </div>
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="contact-item">
+                <span class="ci-icon">in</span>
+                <div>
+                  <span class="ci-label">LinkedIn</span>
+                  <span class="ci-val">linkedin.com/in/vansh</span>
+                </div>
+              </a>
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="contact-item">
+                <span class="ci-icon">gh</span>
+                <div>
+                  <span class="ci-label">GitHub</span>
+                  <span class="ci-val">github.com/vansh</span>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Contact form (validated by form.js) -->
+          <form class="contact-form reveal" id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="fname" class="form-label">Name</label>
+                <input type="text"  id="fname"   name="name"    class="form-input" placeholder="John Doe"          autocomplete="name"  required aria-required="true" />
+                <span class="form-err" id="fname-err"   role="alert" aria-live="polite"></span>
+              </div>
+              <div class="form-field">
+                <label for="femail" class="form-label">Email</label>
+                <input type="email" id="femail"  name="email"   class="form-input" placeholder="john@example.com"  autocomplete="email" required aria-required="true" />
+                <span class="form-err" id="femail-err"  role="alert" aria-live="polite"></span>
+              </div>
+            </div>
+            <div class="form-field">
+              <label for="fsubject" class="form-label">Subject</label>
+              <input type="text" id="fsubject" name="subject" class="form-input" placeholder="Project Inquiry" required aria-required="true" />
+              <span class="form-err" id="fsubject-err" role="alert" aria-live="polite"></span>
+            </div>
+            <div class="form-field">
+              <label for="fmessage" class="form-label">Message</label>
+              <textarea id="fmessage" name="message" class="form-input form-textarea" placeholder="Tell me about your project…" rows="5" required aria-required="true"></textarea>
+              <span class="form-err" id="fmessage-err" role="alert" aria-live="polite"></span>
+            </div>
+            <button type="submit" class="btn-submit" id="submitBtn">Send message →</button>
+            <div class="form-success" id="formSuccess" role="alert" aria-live="polite" hidden>
+              ✓ Sent! I'll get back to you soon.
+            </div>
+          </form>
+
+        </div><!-- /contact-grid -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══════════════════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <a href="#top" class="nav-logo">Vansh<span class="logo-dot">.</span></a>
+      <p class="footer-copy">
+        Designed &amp; built by <strong>Vansh Programmer</strong> &copy; <span id="year"></span>
+      </p>
+      <div class="footer-socials">
+        <a href="https://github.com"   target="_blank" rel="noopener noreferrer" aria-label="GitHub">GH</a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LI</a>
+      </div>
+    </div>
+  </footer>
+
+  <!--
+    JS — loaded as plain scripts in dependency order.
+    Each file defines its init function globally.
+    main.js (last) calls them all.
+
+    Order matters:
+      1. theme.js    → initTheme()
+      2. navbar.js   → initNavbar()
+      3. reveal.js   → initReveal()
+      4. parallax.js → initParallax()
+      5. form.js     → initForm()
+      6. main.js     → calls all of the above
+  -->
+  <script src="js/theme.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/reveal.js"></script>
+  <script src="js/parallax.js"></script>
+  <script src="js/form.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

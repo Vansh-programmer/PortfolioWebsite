@@ -1,0 +1,192 @@
+/* ============================================================
+   navbar.css — Navigation Bar
+   Fixed header, desktop links, theme switcher,
+   hamburger button, and mobile slide-down drawer.
+============================================================ */
+
+/* ── Header wrapper ─────────────────────────────────────────── */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  transition: background 0.5s, border-color 0.5s, backdrop-filter 0.5s;
+  border-bottom: 1px solid transparent;
+}
+
+/* Frosted-glass effect on scroll */
+.site-header.scrolled {
+  background: color-mix(in srgb, var(--color-paper) 85%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom-color: var(--color-line);
+}
+
+/* ── Inner row ──────────────────────────────────────────────── */
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+@media (min-width: 64rem) {
+  .nav-inner { padding: 0 2.5rem; }
+}
+
+/* ── Logo ───────────────────────────────────────────────────── */
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--color-ink);
+  flex-shrink: 0;
+}
+.logo-dot { color: var(--color-accent); }
+
+/* ── Desktop nav links (hidden on mobile) ───────────────────── */
+.nav-links {
+  display: none;
+  align-items: center;
+  gap: 2rem;
+}
+@media (min-width: 48rem) {
+  .nav-links { display: flex; }
+}
+
+.nav-link {
+  font-size: 0.875rem;
+  color: var(--color-ink-soft);
+  transition: color 0.2s;
+  position: relative;
+}
+/* Animated underline indicator */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  height: 1px;
+  width: 0;
+  background: var(--color-accent);
+  transition: width 0.3s cubic-bezier(0, 0, 0.2, 1);
+}
+.nav-link.active,
+.nav-link:hover               { color: var(--color-ink); }
+.nav-link.active::after,
+.nav-link:hover::after        { width: 100%; }
+
+/* ── Theme switcher (pill group) ────────────────────────────── */
+.theme-switcher {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  background: var(--color-sand);
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  padding: 2px;
+}
+.theme-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 0.875rem;
+  color: var(--color-ink-soft);
+  display: grid;
+  place-items: center;
+  transition: background 0.3s, color 0.3s;
+}
+.theme-btn.active,
+.theme-btn[aria-pressed="true"] {
+  background: var(--color-accent);
+  color: var(--color-paper);
+}
+
+/* ── CTA button ─────────────────────────────────────────────── */
+.nav-cta {
+  background: var(--color-ink);
+  color: var(--color-paper);
+  border-radius: 999px;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.875rem;
+  transition: background 0.3s, transform 0.3s;
+  flex-shrink: 0;
+}
+.nav-cta:hover {
+  background: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+/* ── Mobile controls (visible only on small screens) ────────── */
+.nav-mobile-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+@media (min-width: 48rem) {
+  .nav-mobile-controls { display: none; }
+}
+
+/* ── Hamburger button ───────────────────────────────────────── */
+.hamburger {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.ham-bar {
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  background: var(--color-ink);
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+/* Animate into × when open */
+.hamburger[aria-expanded="true"] .ham-bar:nth-child(1) {
+  transform: translateY(3.75px) rotate(45deg);
+}
+.hamburger[aria-expanded="true"] .ham-bar:nth-child(2) {
+  transform: translateY(-3.75px) rotate(-45deg);
+}
+
+/* ── Mobile slide-down drawer ───────────────────────────────── */
+.mobile-drawer {
+  display: none;            /* hidden by default */
+  flex-direction: column;
+  gap: 0.25rem;
+  background: var(--color-paper);
+  border-top: 1px solid var(--color-line);
+  padding: 1rem 1.5rem;
+}
+/* Shown when JS removes the `hidden` attribute */
+.mobile-drawer:not([hidden]) {
+  display: flex;
+}
+
+.mobile-link {
+  display: block;
+  padding: 0.625rem 0;
+  color: var(--color-ink-soft);
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+.mobile-link:hover { color: var(--color-ink); }
+
+.mobile-cta {
+  display: inline-block;
+  margin-top: 0.5rem;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  border-radius: 999px;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.875rem;
+}
