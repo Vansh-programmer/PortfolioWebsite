@@ -6,17 +6,21 @@
  * is already defined globally, so we just call them here.
  *
  * Load order in index.html:
- *   theme.js  → navbar.js  → reveal.js  → parallax.js  → form.js  → main.js
+ *   theme.js → navbar.js → reveal.js → parallax.js → form.js
+ *   → laptop.js → scrolltell.js → main.js
  */
 
 // Footer: current year
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-// Initialise all features
+// Core features
 initTheme();
 initNavbar();
 initReveal();
 initParallax();
 initForm();
 initLaptop();
+
+// Scrollytelling 2.0 — runs last so DOM is fully ready
+initScrolltell();

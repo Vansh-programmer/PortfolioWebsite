@@ -39,6 +39,7 @@
   <link rel="stylesheet" href="css/certificates.css" />
   <link rel="stylesheet" href="css/contact.css" />
   <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/scrolltell.css" />
 </head>
 <body>
 
@@ -155,7 +156,7 @@
         </div>
 
         <!-- ── Right: photo ────────────────────────────── -->
-        <div class="hero-photo reveal from-right">
+        <div class="hero-photo">
           <span class="hand photo-label" aria-hidden="true">
             that's me
             <svg width="54" height="40" viewBox="0 0 54 40" fill="none" aria-hidden="true">
@@ -253,12 +254,12 @@
     ══════════════════════════════════════════════════════════ -->
     <section id="skills" class="section">
       <div class="container">
-        <p class="section-label reveal">Skills</p>
-        <h2 class="section-heading reveal">Everything I reach for <em>on the job</em>.</h2>
+        <p class="section-label st-wipe">Skills</p>
+        <h2 class="section-heading" data-st="fade-up">Everything I reach for <em>on the job</em>.</h2>
 
         <div class="skills-grid">
 
-          <div class="skill-cat reveal">
+          <div class="skill-cat" data-st="fade-right" style="--st-delay:0.0s">
             <h3 class="skill-cat-title">Languages &amp; Fundamentals</h3>
             <div class="skill-pills">
               <span class="pill">HTML5</span>
@@ -269,7 +270,7 @@
             </div>
           </div>
 
-          <div class="skill-cat reveal">
+          <div class="skill-cat" data-st="fade-up" style="--st-delay:0.1s">
             <h3 class="skill-cat-title">Front-End</h3>
             <div class="skill-pills">
               <span class="pill">React</span>
@@ -282,7 +283,7 @@
             </div>
           </div>
 
-          <div class="skill-cat reveal">
+          <div class="skill-cat" data-st="fade-left" style="--st-delay:0.2s">
             <h3 class="skill-cat-title">Back-End &amp; APIs</h3>
             <div class="skill-pills">
               <span class="pill">Node.js</span>
@@ -293,7 +294,7 @@
             </div>
           </div>
 
-          <div class="skill-cat reveal">
+          <div class="skill-cat" data-st="fade-right" style="--st-delay:0.3s">
             <h3 class="skill-cat-title">Databases</h3>
             <div class="skill-pills">
               <span class="pill">MongoDB</span>
@@ -305,7 +306,7 @@
             </div>
           </div>
 
-          <div class="skill-cat reveal">
+          <div class="skill-cat" data-st="fade-up" style="--st-delay:0.4s">
             <h3 class="skill-cat-title">Auth &amp; Security</h3>
             <div class="skill-pills">
               <span class="pill">Auth from Scratch</span>
@@ -315,7 +316,7 @@
             </div>
           </div>
 
-          <div class="skill-cat reveal">
+          <div class="skill-cat" data-st="fade-left" style="--st-delay:0.5s">
             <h3 class="skill-cat-title">Tooling &amp; Delivery</h3>
             <div class="skill-pills">
               <span class="pill">Unix / CLI</span>
@@ -335,8 +336,8 @@
     ══════════════════════════════════════════════════════════ -->
     <section id="showcase" class="section showcase-section">
       <div class="container">
-        <p class="section-label reveal">Work</p>
-        <h2 class="section-heading reveal">Things I've <em>actually shipped</em>.</h2>
+        <p class="section-label st-wipe">Work</p>
+        <h2 class="section-heading" data-st="fade-up">Things I've <em>actually shipped</em>.</h2>
       </div>
 
       <div class="laptop-wrapper reveal">
@@ -428,8 +429,8 @@
     ══════════════════════════════════════════════════════════ -->
     <section id="certificates" class="section cert-section">
       <div class="container">
-        <p class="section-label reveal">Certificates</p>
-        <h2 class="section-heading reveal">Always <em>learning</em>.</h2>
+        <p class="section-label st-wipe">Certificates</p>
+        <h2 class="section-heading" data-st="fade-up">Always <em>learning</em>.</h2>
 
         <div class="certs-grid">
 
@@ -508,13 +509,13 @@
     ══════════════════════════════════════════════════════════ -->
     <section id="contact" class="section contact-section">
       <div class="container">
-        <p class="section-label reveal">Contact</p>
-        <h2 class="section-heading reveal">Let's <em>build something</em> together.</h2>
+        <p class="section-label st-wipe">Contact</p>
+        <h2 class="section-heading" data-st="fade-up">Let's <em>build something</em> together.</h2>
 
         <div class="contact-grid">
 
           <!-- Info links -->
-          <div class="contact-info reveal">
+          <div class="contact-info" data-st="fade-right">
             <p class="contact-lead">
               I'm currently <strong>open to new opportunities</strong>. Whether you have a
               project in mind, a question, or just want to say hi — my inbox is always open!
@@ -545,7 +546,7 @@
           </div>
 
           <!-- Contact form (validated by form.js) -->
-          <form class="contact-form reveal" id="contactForm" novalidate>
+          <form class="contact-form" data-st="fade-left" id="contactForm" novalidate>
             <div class="form-row">
               <div class="form-field">
                 <label for="fname" class="form-label">Name</label>
@@ -614,6 +615,7 @@
   <script src="js/reveal.js"></script>
   <script src="js/parallax.js"></script>
   <script src="js/form.js"></script>
+  <script src="js/scrolltell.js"></script>
   <script src="js/laptop.js"></script>
   <script src="js/main.js"></script>
 
