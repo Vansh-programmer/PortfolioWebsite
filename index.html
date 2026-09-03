@@ -331,7 +331,7 @@
     </section>
 
     <!-- ══════════════════════════════════════════════════════════
-         PROJECTS / SHOWCASE
+         PROJECTS / SHOWCASE (INTERACTIVE LAPTOP)
     ══════════════════════════════════════════════════════════ -->
     <section id="showcase" class="section showcase-section">
       <div class="container">
@@ -339,135 +339,88 @@
         <h2 class="section-heading reveal">Things I've <em>actually shipped</em>.</h2>
       </div>
 
-      <div class="projects-grid container">
+      <div class="laptop-wrapper reveal">
+        <!-- The Laptop Screen (Lid) -->
+        <div class="laptop-lid">
+          <div class="laptop-camera"></div>
+          <div class="laptop-screen-content">
+            <div class="laptop-track" id="laptop-track">
+              
+              <!-- Slide 1 -->
+              <div class="laptop-slide">
+                <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1000&h=600&fit=crop&auto=format&q=80" alt="Blog App" class="slide-img" loading="lazy" />
+                <div class="slide-details">
+                  <p class="slide-meta">Full-Stack App — 2025</p>
+                  <h3 class="slide-title">Blog Application</h3>
+                  <p class="slide-desc">Full-stack blog built with Node.js, Express, and MongoDB. Features user auth, CRUD posts, comments, and cloud deployment. Completely responsive and accessible.</p>
+                  <div class="slide-tags">
+                    <span class="slide-tag">Node.js</span><span class="slide-tag">Express</span><span class="slide-tag">MongoDB</span>
+                  </div>
+                  <p class="scroll-hint">↓ scroll for more details ↓</p>
+                  <div style="height: 150px;"></div> <!-- Fake extra content to demonstrate scrolling -->
+                </div>
+              </div>
 
-        <article class="project-card reveal" style="--tint:#eae6dc">
-          <a href="#" class="project-img-link" target="_blank" rel="noopener noreferrer">
-            <div class="project-img-wrap">
-              <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=700&h=840&fit=crop&auto=format&q=75" alt="Blog Application" loading="lazy" />
-              <div class="project-img-overlay"><span>Open case study ↗</span></div>
-            </div>
-          </a>
-          <div class="project-info">
-            <p class="project-meta font-mono">Full-Stack App — 2025</p>
-            <h3 class="project-title">Blog Application</h3>
-            <p class="project-desc">Full-stack blog built with Node.js, Express, and MongoDB. Features user auth, CRUD posts, comments, and cloud deployment.</p>
-            <div class="project-tags">
-              <span class="tag">Node.js</span><span class="tag">Express</span><span class="tag">MongoDB</span><span class="tag">EJS</span>
-            </div>
-            <div class="project-links">
-              <a href="#" class="proj-link">GitHub ↗</a>
-              <a href="#" class="proj-link">Live demo ↗</a>
+              <!-- Slide 2 -->
+              <div class="laptop-slide">
+                <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=1000&h=600&fit=crop&auto=format&q=80" alt="YelpCamp" class="slide-img" loading="lazy" />
+                <div class="slide-details">
+                  <p class="slide-meta">Full-Stack App — 2024</p>
+                  <h3 class="slide-title">YelpCamp Clone</h3>
+                  <p class="slide-desc">Yelp-like campground review app with full authentication, image uploads, maps integration, and complex data associations.</p>
+                  <div class="slide-tags">
+                    <span class="slide-tag">Express</span><span class="slide-tag">Mapbox</span>
+                  </div>
+                  <p class="scroll-hint">↓ scroll for more details ↓</p>
+                  <div style="height: 150px;"></div>
+                </div>
+              </div>
+
+              <!-- Slide 3 -->
+              <div class="laptop-slide">
+                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=1000&h=600&fit=crop&auto=format&q=80" alt="Todo List" class="slide-img" loading="lazy" />
+                <div class="slide-details">
+                  <p class="slide-meta">Frontend — 2024</p>
+                  <h3 class="slide-title">Animated Todo List</h3>
+                  <p class="slide-desc">Beautiful animated todo list with smooth CSS transitions, local storage persistence, and a clean minimal UI built in vanilla JavaScript.</p>
+                  <div class="slide-tags">
+                    <span class="slide-tag">Vanilla JS</span><span class="slide-tag">CSS3</span>
+                  </div>
+                  <p class="scroll-hint">↓ scroll for more details ↓</p>
+                  <div style="height: 150px;"></div>
+                </div>
+              </div>
+
+              <!-- Slide 4 -->
+              <div class="laptop-slide">
+                <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1000&h=600&fit=crop&auto=format&q=80" alt="Portfolio" class="slide-img" loading="lazy" />
+                <div class="slide-details">
+                  <p class="slide-meta">Landing Page — 2024</p>
+                  <h3 class="slide-title">Photographer Portfolio</h3>
+                  <p class="slide-desc">Stunning, fully responsive photographer's portfolio with masonry gallery, lightbox, and smooth parallax scrolling effects.</p>
+                  <div class="slide-tags">
+                    <span class="slide-tag">HTML5</span><span class="slide-tag">Bootstrap</span>
+                  </div>
+                  <p class="scroll-hint">↓ scroll for more details ↓</p>
+                  <div style="height: 150px;"></div>
+                </div>
+              </div>
+
             </div>
           </div>
-        </article>
+        </div>
 
-        <article class="project-card reveal" style="--tint:#e7ded4">
-          <a href="#" class="project-img-link" target="_blank" rel="noopener noreferrer">
-            <div class="project-img-wrap">
-              <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=700&h=840&fit=crop&auto=format&q=75" alt="YelpCamp Clone" loading="lazy" />
-              <div class="project-img-overlay"><span>Open case study ↗</span></div>
-            </div>
-          </a>
-          <div class="project-info">
-            <p class="project-meta font-mono">Full-Stack App — 2024</p>
-            <h3 class="project-title">YelpCamp Clone</h3>
-            <p class="project-desc">Yelp-like campground review app with full authentication, image uploads, maps integration, and complex data associations.</p>
-            <div class="project-tags">
-              <span class="tag">Express</span><span class="tag">MongoDB</span><span class="tag">Passport.js</span><span class="tag">Mapbox</span>
-            </div>
-            <div class="project-links">
-              <a href="#" class="proj-link">GitHub ↗</a>
-              <a href="#" class="proj-link">Live demo ↗</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card reveal" style="--tint:#dfe4e2">
-          <a href="#" class="project-img-link" target="_blank" rel="noopener noreferrer">
-            <div class="project-img-wrap">
-              <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=700&h=840&fit=crop&auto=format&q=75" alt="Animated Todo List" loading="lazy" />
-              <div class="project-img-overlay"><span>Open case study ↗</span></div>
-            </div>
-          </a>
-          <div class="project-info">
-            <p class="project-meta font-mono">Frontend — 2024</p>
-            <h3 class="project-title">Animated Todo List</h3>
-            <p class="project-desc">Beautiful animated todo list with smooth CSS transitions, local storage persistence, and a clean minimal UI built in vanilla JavaScript.</p>
-            <div class="project-tags">
-              <span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span><span class="tag">LocalStorage</span>
-            </div>
-            <div class="project-links">
-              <a href="#" class="proj-link">GitHub ↗</a>
-              <a href="#" class="proj-link">Live demo ↗</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card reveal" style="--tint:#e6e0ea">
-          <a href="#" class="project-img-link" target="_blank" rel="noopener noreferrer">
-            <div class="project-img-wrap">
-              <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=700&h=840&fit=crop&auto=format&q=75" alt="Photographer Portfolio" loading="lazy" />
-              <div class="project-img-overlay"><span>Open case study ↗</span></div>
-            </div>
-          </a>
-          <div class="project-info">
-            <p class="project-meta font-mono">Landing Page — 2024</p>
-            <h3 class="project-title">Photographer Portfolio</h3>
-            <p class="project-desc">Stunning, fully responsive photographer's portfolio with masonry gallery, lightbox, and smooth parallax scrolling effects.</p>
-            <div class="project-tags">
-              <span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span><span class="tag">Bootstrap</span>
-            </div>
-            <div class="project-links">
-              <a href="#" class="proj-link">GitHub ↗</a>
-              <a href="#" class="proj-link">Live demo ↗</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card reveal" style="--tint:#e3e7dc">
-          <a href="#" class="project-img-link" target="_blank" rel="noopener noreferrer">
-            <div class="project-img-wrap">
-              <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=700&h=840&fit=crop&auto=format&q=75" alt="Startup Landing Page" loading="lazy" />
-              <div class="project-img-overlay"><span>Open case study ↗</span></div>
-            </div>
-          </a>
-          <div class="project-info">
-            <p class="project-meta font-mono">Landing Page — 2023</p>
-            <h3 class="project-title">Startup Landing Page</h3>
-            <p class="project-desc">Responsive startup landing page with hero section, feature cards, pricing table, testimonials, and newsletter signup with form validation.</p>
-            <div class="project-tags">
-              <span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">Bootstrap 5</span><span class="tag">Forms</span>
-            </div>
-            <div class="project-links">
-              <a href="#" class="proj-link">GitHub ↗</a>
-              <a href="#" class="proj-link">Live demo ↗</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card reveal" style="--tint:#e8e5dd">
-          <a href="#" class="project-img-link" target="_blank" rel="noopener noreferrer">
-            <div class="project-img-wrap">
-              <img src="https://images.unsplash.com/photo-1517842645767-c639042777db?w=700&h=840&fit=crop&auto=format&q=75" alt="JS Browser Game" loading="lazy" />
-              <div class="project-img-overlay"><span>Open case study ↗</span></div>
-            </div>
-          </a>
-          <div class="project-info">
-            <p class="project-meta font-mono">Frontend — 2023</p>
-            <h3 class="project-title">JS Browser Game</h3>
-            <p class="project-desc">Interactive browser-based game with game loop, collision detection, score tracking, and responsive controls — pure vanilla JS.</p>
-            <div class="project-tags">
-              <span class="tag">JavaScript</span><span class="tag">Canvas API</span><span class="tag">DOM API</span>
-            </div>
-            <div class="project-links">
-              <a href="#" class="proj-link">GitHub ↗</a>
-              <a href="#" class="proj-link">Live demo ↗</a>
-            </div>
-          </div>
-        </article>
-
-      </div><!-- /projects-grid -->
+        <!-- The Laptop Base (Keyboard Deck) -->
+        <div class="laptop-deck">
+          <div id="laptop-keyboard" class="deck-keyboard"></div>
+          <div class="deck-trackpad"></div>
+        </div>
+        
+        <div class="laptop-instructions">
+          <p>Use <strong>W / S</strong> to scroll vertically</p>
+          <p>Use <strong>A / D</strong> to switch projects</p>
+        </div>
+      </div>
     </section>
 
     <!-- ══════════════════════════════════════════════════════════
@@ -661,6 +614,7 @@
   <script src="js/reveal.js"></script>
   <script src="js/parallax.js"></script>
   <script src="js/form.js"></script>
+  <script src="js/laptop.js"></script>
   <script src="js/main.js"></script>
 
 </body>

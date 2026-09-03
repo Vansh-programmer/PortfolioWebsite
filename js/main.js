@@ -19,3 +19,4 @@ initNavbar();
 initReveal();
 initParallax();
 initForm();
+initLaptop();
