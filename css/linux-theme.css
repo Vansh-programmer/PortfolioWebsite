@@ -1,0 +1,472 @@
+/* ============================================================
+   linux-theme.css — Linux Desktop Environment
+   Window Manager & UI
+============================================================ */
+
+/* Hide traditional UI */
+[data-theme="linux"] .site-header,
+[data-theme="linux"] .hero,
+[data-theme="linux"] .showcase-section,
+[data-theme="linux"] .skills-section,
+[data-theme="linux"] .cert-section,
+[data-theme="linux"] .contact-section,
+[data-theme="linux"] .footer {
+  display: none !important;
+}
+
+[data-theme="linux"] body {
+  background: #000;
+  overflow: hidden;
+  margin: 0; padding: 0;
+}
+
+/* ── Boot Screen ────────────────────────────────────────────── */
+#boot-screen {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  color: #fff;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.85rem;
+  z-index: 9999;
+  padding: 1rem;
+  overflow: hidden;
+}
+#boot-log {
+  white-space: pre-wrap;
+  line-height: 1.4;
+}
+
+/* ── Desktop Environment ────────────────────────────────────── */
+#linux-desktop {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  background: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1600&fit=crop&q=80') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+[data-theme="linux"] #linux-desktop {
+  display: flex !important;
+}
+
+/* ── Dock ───────────────────────────────────────────────────── */
+#linux-dock {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  padding: 10px 20px;
+  border-radius: 20px;
+  display: flex;
+  gap: 20px;
+  z-index: 9900;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.dock-icon {
+  width: 50px;
+  height: 50px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+  position: relative;
+}
+.dock-icon:hover {
+  transform: translateY(-5px);
+  background: rgba(255,255,255,0.2);
+}
+.dock-icon.active::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+/* ── Generic Window ─────────────────────────────────────────── */
+.gui-window {
+  width: 90%;
+  max-width: 800px;
+  height: 70vh;
+  min-height: 400px;
+  background: rgba(30, 30, 30, 0.95);
+  border-radius: 10px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: absolute;
+  resize: both;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.window-header {
+  background: #2a2a2a;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  cursor: grab;
+  user-select: none;
+  height: 38px;
+}
+.window-header:active { cursor: grabbing; }
+
+.win-buttons {
+  display: flex;
+  gap: 8px;
+  position: absolute;
+}
+.win-btn {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+}
+.win-btn.close { background: #ff5f56; }
+.win-btn.minimize { background: #ffbd2e; }
+.win-btn.maximize { background: #27c93f; }
+
+.win-title {
+  flex: 1;
+  text-align: center;
+  color: #ccc;
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.85rem;
+  font-weight: 500;
+  pointer-events: none;
+}
+
+.window-body {
+  flex: 1;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* ── App Specifics ──────────────────────────────────────────── */
+#app-terminal {
+  background: rgba(48, 10, 36, 0.95); /* Ubuntu purple */
+}
+#app-terminal .window-header {
+  background: #3e3e3e;
+}
+.terminal-body {
+  padding: 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.95rem;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+#term-output {
+  white-space: pre-wrap;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+.term-input-line { display: flex; align-items: center; }
+.term-prompt { color: #87d700; margin-right: 0.5rem; white-space: nowrap; }
+#term-input {
+  flex: 1; background: transparent; border: none; color: #fff; font-family: inherit; font-size: inherit; outline: none;
+}
+
+.files-body {
+  background: #1e1e1e;
+  padding: 2rem;
+}
+.file-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.file-item {
+  width: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  text-align: center;
+}
+.file-item:hover .file-icon {
+  background: rgba(255,255,255,0.1);
+}
+.file-icon {
+  font-size: 3rem;
+  width: 70px; height: 70px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 12px;
+  transition: background 0.2s;
+}
+.file-name {
+  color: #ccc;
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.8rem;
+  word-break: break-all;
+}
+
+.video-body video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000;
+}
+
+.viewer-body iframe {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+}
+
+#linux-shutdown {
+  color: #ff5f56;
+}
+
+/* ── Top Bar (Waybar style) ─────────────────────────────────── */
+#linux-topbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 32px;
+  background: rgba(15, 15, 15, 0.85);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  z-index: 9950;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  color: #fff;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.85rem;
+  user-select: none;
+}
+.topbar-left, .topbar-center, .topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.workspaces {
+  display: flex;
+  gap: 4px;
+}
+.ws {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  color: #888;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.ws:hover { background: rgba(255,255,255,0.1); color: #fff; }
+.ws.active {
+  background: rgba(135, 215, 0, 0.2);
+  color: #87d700;
+  border-bottom: 2px solid #87d700;
+  border-radius: 4px 4px 0 0;
+}
+.active-window-title {
+  color: #ddd;
+  font-weight: bold;
+  padding-left: 0.5rem;
+  border-left: 1px solid rgba(255,255,255,0.2);
+}
+.topbar-right { gap: 0.8rem; }
+.tray-icon { color: #ccc; cursor: pointer; }
+.tray-icon:hover { color: #fff; }
+
+/* ── Conky Widget ───────────────────────────────────────────── */
+#conky-widget {
+  position: absolute;
+  top: 80px;
+  right: 40px;
+  width: 300px;
+  color: #fff;
+  font-family: var(--font-sans, sans-serif);
+  text-align: right;
+  z-index: 9005;
+  user-select: none;
+  pointer-events: none;
+}
+.conky-time {
+  font-size: 5rem;
+  font-weight: 300;
+  line-height: 1;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  margin-bottom: 0.5rem;
+}
+.conky-date {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #ccc;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  margin-bottom: 2rem;
+}
+.conky-sys {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  background: rgba(0,0,0,0.4);
+  padding: 1.5rem;
+  border-radius: 12px;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+.sys-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.85rem;
+}
+.sys-label { width: 45px; text-align: left; color: #aaa; }
+.sys-val { width: 35px; text-align: right; color: #fff; }
+.sys-bar {
+  flex: 1;
+  height: 6px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.sys-fill {
+  height: 100%;
+  background: #87d700;
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(135,215,0,0.5);
+}
+
+/* ── Enhance Window Aesthetics (Hyprland vibe) ──────────────── */
+.gui-window {
+  border: 1px solid rgba(135, 215, 0, 0.4);
+  box-shadow: 0 0 20px rgba(0,0,0,0.8), 0 0 0 1px rgba(135,215,0,0.2);
+  border-radius: 8px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.gui-window.active-win {
+  border: 1px solid rgba(135, 215, 0, 0.8);
+  box-shadow: 0 0 30px rgba(0,0,0,0.9), 0 0 15px rgba(135,215,0,0.3);
+}
+
+/* ── Live Wallpaper ─────────────────────────────────────────── */
+.linux-wallpaper-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1; /* Lowest z-index inside #linux-desktop */
+}
+.linux-wallpaper-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4); /* Darkens the video so desktop is readable */
+  backdrop-filter: blur(2px); /* Slight blur for that Hyprland aesthetic */
+  z-index: 2;
+}
+
+/* Adjust dock and windows z-index relative to wallpaper */
+#linux-dock { z-index: 9900; }
+.gui-window { z-index: 10; } 
+
+
+/* ── App: Browser ───────────────────────────────────────────── */
+#app-browser {
+  background: #fdfdfd;
+  color: #333;
+}
+.browser-body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.browser-navbar {
+  background: #f1f1f1;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+}
+.url-bar {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 999px;
+  padding: 0.4rem 1rem;
+  font-family: var(--font-sans, sans-serif);
+  font-size: 0.8rem;
+  color: #555;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+.browser-content {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+  font-family: var(--font-sans, sans-serif);
+  line-height: 1.6;
+}
+.article-style h1 {
+  font-size: 2rem;
+  color: #111;
+}
+.article-style .subtitle {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+.article-style h2 {
+  font-size: 1.5rem;
+  color: #222;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #87d700;
+  display: inline-block;
+}
+.article-style p {
+  margin-bottom: 1rem;
+}
+.feature-card {
+  background: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.feature-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+.feature-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #111;
+  font-size: 1.1rem;
+}
+.feature-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+.feature-card code {
+  background: #eee;
+  padding: 2px 4px;
+  border-radius: 4px;
+  color: #d9385e;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.85rem;
+}

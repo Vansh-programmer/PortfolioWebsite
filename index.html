@@ -40,6 +40,7 @@
   <link rel="stylesheet" href="css/contact.css" />
   <link rel="stylesheet" href="css/footer.css" />
   <link rel="stylesheet" href="css/scrolltell.css" />
+  <link rel="stylesheet" href="css/linux-theme.css" />
 </head>
 <body>
 
@@ -66,7 +67,7 @@
         <div class="theme-switcher" role="group" aria-label="Theme mode">
           <button class="theme-btn active" data-theme="light" title="Light mode" aria-pressed="true">☀</button>
           <button class="theme-btn"        data-theme="dark"  title="Dark mode"  aria-pressed="false">☾</button>
-          <button class="theme-btn"        data-theme="game"  title="Game mode"  aria-pressed="false">🎮</button>
+          <button class="theme-btn"        data-theme="linux"  title="Linux mode"  aria-pressed="false">🐧</button>
         </div>
 
         <a href="#contact" class="nav-cta">Get in touch</a>
@@ -77,7 +78,7 @@
         <div class="theme-switcher" role="group" aria-label="Theme mode">
           <button class="theme-btn active" data-theme="light" title="Light mode" aria-pressed="true">☀</button>
           <button class="theme-btn"        data-theme="dark"  title="Dark mode"  aria-pressed="false">☾</button>
-          <button class="theme-btn"        data-theme="game"  title="Game mode"  aria-pressed="false">🎮</button>
+          <button class="theme-btn"        data-theme="linux"  title="Linux mode"  aria-pressed="false">🐧</button>
         </div>
         <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
           <span class="ham-bar"></span>
@@ -150,7 +151,8 @@
               <span class="stat-label">Arduino tinkering</span>
             </div>
           </div>
-        </div> <!-- End of hero-text -->
+        </div>
+        </div>
 
         <!-- ── Right: photo ────────────────────────────── -->
         <div class="hero-photo">
@@ -406,19 +408,47 @@
                 </div>
               </div>
 
-              <!-- Slide 4 -->
+                            <!-- Slide 4 -->
               <div class="laptop-slide">
-                <div style="width: 100%; height: 100%; min-height: 100%; background: #000; display:flex; align-items:center; justify-content:center; position:relative;">
-                    <img src="assets/images/linux_tui.jpg" style="width:100%;height:100%;object-fit:cover;" alt="Linux TUI">
-                </div>
-                <div class="slide-details">
-                  <p class="slide-meta">Linux & Systems</p>
-                  <h3 class="slide-title">Linux TUI & Automation</h3>
-                  <p class="slide-desc">A Terminal User Interface (TUI) and suite of Bash scripts to automate my daily tasks on Linux and manage background processes without a GUI.</p>
-                  <div class="slide-tags">
-                    <span class="slide-tag">Linux</span><span class="slide-tag">Bash</span><span class="slide-tag">Python</span><span class="slide-tag">Claude CLI</span>
+                <div style="width: 100%; height: 100%; min-height: 100%; background: #000; position:relative; overflow: hidden; display: flex; flex-direction: column;">
+                  <div class="mock-terminal-wrapper">
+                    <div class="mock-term-header">
+                      <div class="dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></div>
+                      <div class="title">vansh@ai-tui: ~</div>
+                    </div>
+                    <div class="mock-term-body">
+                      <div class="term-line"><span class="prompt">vansh@ai-tui:~$</span> lss</div>
+                      <div class="term-line error">bash: lss: command not found</div>
+                      <div class="term-line ai-box">
+                        <span class="ai-badge">AI Assistant</span>
+                        <p>It looks like you made a typo. Did you mean <strong>ls</strong>?</p>
+                        <p class="ai-desc">The <code>ls</code> command is used to list all files and directories in your current folder.</p>
+                      </div>
+                      <div class="term-line"><span class="prompt">vansh@ai-tui:~$</span> ask "write a python script to ping a website"</div>
+                      <div class="term-line ai-box">
+                        <span class="ai-badge ollama-badge">Ollama</span>
+                        <p>Generating script via local LLM...</p>
+                        <pre><code>import os
+hostname = "google.com"
+response = os.system("ping -c 1 " + hostname)
+if response == 0:
+    print(hostname, 'is up!')
+else:
+    print(hostname, 'is down!')</code></pre>
+                      </div>
+                      <div class="term-line"><span class="prompt">vansh@ai-tui:~$</span> <span class="cursor"></span></div>
+                    </div>
                   </div>
-                  <p class="scroll-hint">↓ scroll for more details ↓</p>
+                </div>
+                
+                <div class="slide-details" style="padding-top: 1.5rem;">
+                  <p class="slide-meta">Linux & Local AI</p>
+                  <h3 class="slide-title">AI-Powered CLI Assistant</h3>
+                  <p class="slide-desc">A Terminal User Interface (TUI) designed to help beginners learn Linux. It catches mistyped commands, provides educational explanations, and uses local AI (Ollama) or external APIs to instantly generate automation scripts from natural language queries.</p>
+                  <div class="slide-tags">
+                    <span class="slide-tag">Python</span><span class="slide-tag">Ollama</span><span class="slide-tag">Bash</span><span class="slide-tag">TUI</span>
+                  </div>
+                  <p class="scroll-hint" style="margin-top: 2rem;">↓ scroll for more details ↓</p>
                   <div style="height: 150px;"></div>
                 </div>
               </div>
@@ -673,7 +703,218 @@
   <script src="js/form.js"></script>
   <script src="js/scrolltell.js"></script>
   <script src="js/laptop.js"></script>
+  <script src="js/terminal.js"></script>
   <script src="js/main.js"></script>
 
-</body>
+
+    <!-- ══════════════════════════════════════════════════════════
+         LINUX DESKTOP ENVIRONMENT
+    ══════════════════════════════════════════════════════════ -->
+    <div id="boot-screen" style="display: none;">
+      <div id="boot-log"></div>
+    </div>
+
+        <div id="linux-desktop" style="display: none;">
+                  <video class="linux-wallpaper-video" src="assets/videos/wallpaper.mp4" autoplay loop muted playsinline></video>
+      <div class="linux-wallpaper-overlay"></div>
+      
+      <!-- Top Bar (Hyprland / Waybar style) -->
+      <div id="linux-topbar">
+        <div class="topbar-left">
+          <div class="workspaces">
+            <span class="ws active">1</span>
+            <span class="ws">2</span>
+            <span class="ws">3</span>
+            <span class="ws">4</span>
+          </div>
+          <span class="active-window-title" id="topbar-title">Desktop</span>
+        </div>
+        <div class="topbar-center" id="topbar-clock">
+          00:00 AM - Jan 1
+        </div>
+        <div class="topbar-right">
+          <span class="tray-icon">🛜</span>
+          <span class="tray-icon">🔊</span>
+          <span class="tray-icon">🔋 98%</span>
+          <span class="tray-icon">⚙️</span>
+        </div>
+      </div>
+
+      <!-- Conky / Desktop Widget -->
+      <div id="conky-widget">
+        <div class="conky-time" id="conky-time">00:00</div>
+        <div class="conky-date" id="conky-date">Monday, 1 January</div>
+        <div class="conky-sys">
+          <div class="sys-row">
+            <span class="sys-label">CPU</span>
+            <div class="sys-bar"><div class="sys-fill" style="width: 14%;"></div></div>
+            <span class="sys-val">14%</span>
+          </div>
+          <div class="sys-row">
+            <span class="sys-label">RAM</span>
+            <div class="sys-bar"><div class="sys-fill" style="width: 42%;"></div></div>
+            <span class="sys-val">42%</span>
+          </div>
+          <div class="sys-row">
+            <span class="sys-label">/home</span>
+            <div class="sys-bar"><div class="sys-fill" style="width: 68%;"></div></div>
+            <span class="sys-val">68%</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Dock -->
+      <div id="linux-dock">
+        <div class="dock-icon" data-app="app-terminal" title="Terminal">
+          <span>&gt;_</span>
+        </div>
+        <div class="dock-icon" data-app="app-files" title="Files">
+          <span>📁</span>
+        </div>
+        <div class="dock-icon" data-app="app-browser" title="Browser - Architecture">
+          <span>🌐</span>
+        </div>
+        <div class="dock-icon" data-app="app-video" title="Projects (Video)">
+          <span>🎬</span>
+        </div>
+        <div class="dock-icon" id="linux-shutdown" title="Shutdown OS">
+          <span>⏻</span>
+        </div>
+      </div>
+
+      <!-- App: Terminal -->
+      <div class="gui-window" id="app-terminal" style="display: none;">
+        <div class="window-header">
+          <div class="win-buttons">
+            <span class="win-btn close" data-close="app-terminal"></span>
+            <span class="win-btn minimize" data-min="app-terminal"></span>
+            <span class="win-btn maximize"></span>
+          </div>
+          <div class="win-title">vansh@portfolio: ~</div>
+        </div>
+        <div class="window-body terminal-body" id="terminal-body">
+          <div id="term-output"></div>
+          <div class="term-input-line">
+            <span class="term-prompt" id="term-prompt">vansh@portfolio:~$</span>
+            <input type="text" id="term-input" autocomplete="off" spellcheck="false" />
+          </div>
+        </div>
+      </div>
+
+      <!-- App: Files -->
+      <div class="gui-window" id="app-files" style="display: none;">
+        <div class="window-header">
+          <div class="win-buttons">
+            <span class="win-btn close" data-close="app-files"></span>
+            <span class="win-btn minimize" data-min="app-files"></span>
+            <span class="win-btn maximize"></span>
+          </div>
+          <div class="win-title">File Explorer</div>
+        </div>
+        <div class="window-body files-body">
+                    <div class="file-grid">
+            <div class="file-item" data-open="how_it_was_made.html">
+              <span class="file-icon" style="font-size: 2.5rem;">🌐</span>
+              <span class="file-name">how_it_was_made.html</span>
+            </div>
+            <div class="file-item" data-open="resume.pdf">
+              <span class="file-icon">📄</span>
+              <span class="file-name">resume.pdf</span>
+            </div>
+            <div class="file-item" data-open="cert1_python-1.jpg">
+              <span class="file-icon">🖼️</span>
+              <span class="file-name">cert1_python-1.jpg</span>
+            </div>
+            <div class="file-item" data-open="cert2_genai-1.jpg">
+              <span class="file-icon">🖼️</span>
+              <span class="file-name">cert2_genai-1.jpg</span>
+            </div>
+            <div class="file-item" data-open="cert3_swe-1.jpg">
+              <span class="file-icon">🖼️</span>
+              <span class="file-name">cert3_swe-1.jpg</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- App: Video Player -->
+      <div class="gui-window" id="app-video" style="display: none;">
+        <div class="window-header">
+          <div class="win-buttons">
+            <span class="win-btn close" data-close="app-video"></span>
+            <span class="win-btn minimize" data-min="app-video"></span>
+            <span class="win-btn maximize"></span>
+          </div>
+          <div class="win-title">Projects Media Player</div>
+        </div>
+        <div class="window-body video-body">
+          <video src="assets/videos/aimlab.mp4" controls autoplay loop muted></video>
+        </div>
+      </div>
+
+      <!-- App: Browser -->
+      <div class="gui-window" id="app-browser" style="display: none;">
+        <div class="window-header">
+          <div class="win-buttons">
+            <span class="win-btn close" data-close="app-browser"></span>
+            <span class="win-btn minimize" data-min="app-browser"></span>
+            <span class="win-btn maximize"></span>
+          </div>
+          <div class="win-title">Browser - Architecture</div>
+        </div>
+        <div class="window-body browser-body">
+          <div class="browser-navbar">
+            <span class="url-bar">🔒 https://vansh.portfolio/how-it-was-made</span>
+          </div>
+          <div class="browser-content article-style">
+            <h1 style="margin-top: 0;">Behind the Scenes</h1>
+            <p class="subtitle">A complete breakdown of the tech stack and features driving this portfolio.</p>
+            
+            <hr>
+
+            <h2>Tech Stack</h2>
+            <p>This entire portfolio is built using <strong>Vanilla HTML, CSS, and JavaScript</strong>. Zero bloated frameworks (like React or Vue) were used. This ensures lightning-fast load times and proves a deep, fundamental understanding of core web technologies.</p>
+
+            <h2>Feature Breakdown</h2>
+            <div class="feature-card">
+              <h3>🐧 Linux Window Manager</h3>
+              <p>The draggable floating windows were engineered from scratch in JavaScript. Event listeners track mouse coordinates to allow dragging, while a custom function manages <code>z-index</code> stacking to ensure the active window always comes to the front.</p>
+            </div>
+            
+            <div class="feature-card">
+              <h3>⌨️ Interactive Bash Terminal</h3>
+              <p>The terminal engine intercepts raw keyboard events, maintains a history stack for Up/Down arrow navigation, and uses a custom string parser to execute commands against an in-memory JSON file system.</p>
+            </div>
+
+            <div class="feature-card">
+              <h3>💻 3D Laptop Showcase</h3>
+              <p>The laptop on the main website uses advanced CSS 3D transforms (<code>perspective</code>, <code>rotateX</code>, <code>rotateY</code>). JavaScript listens for scroll events and keyboard inputs (W, A, S, D) to animate the sliding projects inside the screen container.</p>
+            </div>
+
+            <div class="feature-card">
+              <h3>✨ Hyprland Aesthetics</h3>
+              <p>The glowing window borders and frosted top-bar rely on CSS <code>backdrop-filter: blur()</code> and dynamic <code>box-shadow</code> effects that transition instantly when a window gains focus.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- App: Media Viewer (PDFs/Images) -->
+      <div class="gui-window" id="app-viewer" style="display: none;">
+        <div class="window-header">
+          <div class="win-buttons">
+            <span class="win-btn close" data-close="app-viewer"></span>
+            <span class="win-btn minimize" data-min="app-viewer"></span>
+            <span class="win-btn maximize"></span>
+          </div>
+          <div class="win-title" id="viewer-title">Viewer</div>
+        </div>
+        <div class="window-body viewer-body">
+          <iframe id="viewer-frame" src="" frameborder="0"></iframe>
+        </div>
+      </div>
+
+    </div>
+
+  </body>
 </html>

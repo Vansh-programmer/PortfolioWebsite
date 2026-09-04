@@ -12,12 +12,18 @@ const THEME_KEY = 'portfolio-mode';
 
 function getSavedTheme() {
   const saved = localStorage.getItem(THEME_KEY);
-  return ['light', 'dark', 'game'].includes(saved) ? saved : 'light';
+  return ['light', 'dark'].includes(saved) ? saved : 'light';
 }
 
 function applyTheme(theme) {
+  
+  // Trigger boot sequence if switching TO linux
+  if (theme === 'linux' && document.documentElement.dataset.theme !== 'linux') {
+    if (window.bootLinux) window.bootLinux();
+  }
   document.documentElement.dataset.theme = theme;
-  localStorage.setItem(THEME_KEY, theme);
+
+  if (theme !== 'linux') localStorage.setItem(THEME_KEY, theme);
 
   document.querySelectorAll('.theme-btn').forEach(btn => {
     const isActive = btn.dataset.theme === theme;
