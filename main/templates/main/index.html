@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
@@ -28,21 +29,25 @@
     │  footer.css       → site footer                          │
     └──────────────────────────────────────────────────────────┘
   -->
-  <link rel="stylesheet" href="css/variables.css" />
-  <link rel="stylesheet" href="css/reset.css" />
-  <link rel="stylesheet" href="css/utilities.css" />
-  <link rel="stylesheet" href="css/navbar.css" />
-  <link rel="stylesheet" href="css/hero.css" />
-  <link rel="stylesheet" href="css/about.css" />
-  <link rel="stylesheet" href="css/skills.css" />
-  <link rel="stylesheet" href="css/projects.css" />
-  <link rel="stylesheet" href="css/certificates.css" />
-  <link rel="stylesheet" href="css/contact.css" />
-  <link rel="stylesheet" href="css/footer.css" />
-  <link rel="stylesheet" href="css/scrolltell.css" />
-  <link rel="stylesheet" href="css/linux-theme.css" />
+  <link rel="stylesheet" href="{% static 'main/css/variables.css' %}" />
+  <link rel="stylesheet" href="{% static 'main/css/reset.css' %}" />
+  <link rel="stylesheet" href="{% static 'main/css/utilities.css' %}" />
+  <link rel="stylesheet" href="{% static 'main/css/navbar.css' %}" />
+  <link rel="stylesheet" href="{% static 'main/css/hero.css' %}" />
+  <link rel="stylesheet" href="{% static 'main/css/about.css' %}" />
+  <link rel="stylesheet" href="{% static 'main/css/skills.css' %}" />
+  <link rel="stylesheet" href="{% static 'main/css/projects.css' %}" />
+  <link rel="stylesheet" href="{% static 'main/css/certificates.css' %}" />
+  <link rel="stylesheet" href="{% static 'main/css/contact.css' %}" />
+  <link rel="stylesheet" href="{% static 'main/css/footer.css' %}" />
+  <link rel="stylesheet" href="{% static 'main/css/scrolltell.css' %}" />
+  <link rel="stylesheet" href="{% static 'main/css/linux-theme.css' %}" />
 </head>
 <body>
+  <!-- Custom Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+
 
   <!-- Scroll progress bar (filled by parallax.js) -->
   <div class="scroll-progress" aria-hidden="true"></div>
@@ -112,30 +117,30 @@
 
         <!-- ── Left: text ──────────────────────────────── -->
         <div class="hero-text">
-          <p class="hero-eyebrow reveal">
+          <p class="hero-eyebrow">
             <span class="hand text-accent">hey there —</span>
             <span class="eyebrow-line"></span>
             Full-Stack Developer
           </p>
 
-          <h1 class="hero-heading reveal">
+          <h1 class="hero-heading">
             I'm Vansh. I learn by<br><em> building things</em>.
           </h1>
 
-          <p class="hero-subtext reveal">
+          <p class="hero-subtext">
             I got into coding because I wanted to understand how video games work. 
             Now, I build web apps with Django and Flask, create Linux TUIs, and write scripts 
             to automate my daily tasks.
           </p>
 
-          <div class="hero-cta reveal">
+          <div class="hero-cta">
             <a href="#showcase" class="btn-primary">
               View work <span class="btn-arrow">→</span>
             </a>
             <a href="assets/Vansh_Poonia_Resume.pdf" target="_blank" class="btn-text">Download résumé ↗</a>
           </div>
 
-          <div class="hero-stats reveal" aria-label="Quick facts">
+          <div class="hero-stats" aria-label="Quick facts">
             <div class="stat">
               <span class="stat-val">Python</span>
               <span class="stat-label">Django, Flask, Pygame</span>
@@ -166,7 +171,7 @@
 
           <div class="photo-frame">
             <img
-              src="assets/images/vansh.jpg"
+              src="{% static 'main/assets/images/vanshsmall.jpg' %}"
               alt="Vansh Poonia, full-stack developer"
               loading="eager"
               fetchpriority="high"
@@ -182,7 +187,7 @@
       </div><!-- /hero-inner -->
 
       <!-- Arrow doodle -->
-      <div class="hero-doodle reveal" aria-hidden="true">
+      <div class="hero-doodle" aria-hidden="true">
         <span class="hand doodle-label">the work, this way</span>
         <svg viewBox="0 0 90 140" width="90" height="140"
              fill="none" stroke="currentColor"
@@ -235,7 +240,7 @@
             <div class="about-card">
               <div class="about-photo-wrap">
                 <img
-                  src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=500&fit=crop&auto=format&q=75"
+                  src="{% static 'main/assets/images/vanshsmall.jpg' %}"
                   alt="Coding setup"
                   loading="lazy"
                 />
@@ -374,7 +379,7 @@
                 <!-- Local HTML5 Video: Autoplay, Muted, Loop, unclickable -->
                 <div style="position: relative; width: 100%; height: 100%; min-height: 100%; background: #000; overflow: hidden; pointer-events: none; border-bottom: 1px solid #333;">
                   <video 
-                    src="assets/videos/aimlab.mp4" 
+                    src="{% static 'main/assets/videos/aimlab.mp4' %}" 
                     autoplay loop muted playsinline 
                     style="width: 100%; height: 100%; object-fit: cover;">
                   </video>
@@ -394,7 +399,7 @@
               <!-- Slide 3 -->
               <div class="laptop-slide">
                 <div style="width: 100%; height: 100%; min-height: 100%; background: #000; display:flex; align-items:center; justify-content:center; color:#fff; font-family:monospace; position:relative;">
-                    <img src="assets/images/arduino_weather.jpg" style="width:100%;height:100%;object-fit:cover;" alt="Arduino Weather Monitor">
+                    <img src="{% static 'main/assets/images/arduino_weather.jpg' %}" style="width:100%;height:100%;object-fit:cover;" alt="Arduino Weather Monitor">
                 </div>
                 <div class="slide-details">
                   <p class="slide-meta">Hardware — Arduino</p>
@@ -456,7 +461,7 @@ else:
               <!-- Slide 5 -->
               <div class="laptop-slide">
                 <div style="width: 100%; height: 100%; min-height: 100%; background: #000; display:flex; align-items:center; justify-content:center; color:#fff; font-family:monospace; position:relative;">
-                    <img src="assets/images/pygame_game.jpg" style="width:100%;height:100%;object-fit:cover;" alt="Pygame 2D Platformer">
+                    <img src="{% static 'main/assets/images/pygame_game.jpg' %}" style="width:100%;height:100%;object-fit:cover;" alt="Pygame 2D Platformer">
                 </div>
                 <div class="slide-details">
                   <p class="slide-meta">Game Dev — Python</p>
@@ -499,7 +504,7 @@ else:
 
           <div class="cert-card reveal" style="--tint:#eef2f5" data-url="https://coursera.org/verify/OT7HSWHVD6XY">
             <div class="cert-img-wrap">
-              <img src="assets/certs/cert1_python-1.jpg" alt="Python Certificate" loading="lazy" />
+              <img src="{% static 'main/assets/certs/cert1_python-1.jpg' %}" alt="Python Certificate" loading="lazy" />
             </div>
             <div class="cert-info">
               <p class="cert-issuer">University of Michigan / Coursera</p>
@@ -510,7 +515,7 @@ else:
 
           <div class="cert-card reveal" style="--tint:#e8e2ea" data-url="https://coursera.org/verify/ZRLC9J7HCU9Y">
             <div class="cert-img-wrap">
-              <img src="assets/certs/cert2_genai-1.jpg" alt="Generative AI Certificate" loading="lazy" />
+              <img src="{% static 'main/assets/certs/cert2_genai-1.jpg' %}" alt="Generative AI Certificate" loading="lazy" />
             </div>
             <div class="cert-info">
               <p class="cert-issuer">IBM / Coursera</p>
@@ -521,7 +526,7 @@ else:
 
           <div class="cert-card reveal" style="--tint:#e2e8ea" data-url="https://coursera.org/verify/LED8Q2VDS8YL">
             <div class="cert-img-wrap">
-              <img src="assets/certs/cert3_swe-1.jpg" alt="Software Engineering Certificate" loading="lazy" />
+              <img src="{% static 'main/assets/certs/cert3_swe-1.jpg' %}" alt="Software Engineering Certificate" loading="lazy" />
             </div>
             <div class="cert-info">
               <p class="cert-issuer">IBM / Coursera</p>
@@ -532,7 +537,7 @@ else:
 
           <div class="cert-card reveal" style="--tint:#eee7dd" data-url="https://coursera.org/verify/OKU5CKFNX554">
             <div class="cert-img-wrap">
-              <img src="assets/certs/cert4_frontend-1.jpg" alt="Frontend Certificate" loading="lazy" />
+              <img src="{% static 'main/assets/certs/cert4_frontend-1.jpg' %}" alt="Frontend Certificate" loading="lazy" />
             </div>
             <div class="cert-info">
               <p class="cert-issuer">Meta / Coursera</p>
@@ -543,7 +548,7 @@ else:
 
           <div class="cert-card reveal" style="--tint:#e6e8de" data-url="https://coursera.org/verify/VQCOC6YYTPK6">
             <div class="cert-img-wrap">
-              <img src="assets/certs/cert5_backend-1.jpg" alt="Backend Certificate" loading="lazy" />
+              <img src="{% static 'main/assets/certs/cert5_backend-1.jpg' %}" alt="Backend Certificate" loading="lazy" />
             </div>
             <div class="cert-info">
               <p class="cert-issuer">Meta / Coursera</p>
@@ -555,7 +560,7 @@ else:
         
           <div class="cert-card reveal" style="--tint:#dde8ee" data-url="https://coursera.org/verify/PZKFTUF8ZQX3">
             <div class="cert-img-wrap">
-              <img src="assets/certs/cert6_duke_js-1.jpg" alt="Programming Foundations Certificate" loading="lazy" />
+              <img src="{% static 'main/assets/certs/cert6_duke_js-1.jpg' %}" alt="Programming Foundations Certificate" loading="lazy" />
             </div>
             <div class="cert-info">
               <p class="cert-issuer">Duke University / Coursera</p>
@@ -566,7 +571,7 @@ else:
 
           <div class="cert-card reveal" style="--tint:#e0e8dd" data-url="https://coursera.org/verify/S3JBLP5P7IYQ">
             <div class="cert-img-wrap">
-              <img src="assets/certs/cert7_london_ds-1.jpg" alt="Data Science Profession Certificate" loading="lazy" />
+              <img src="{% static 'main/assets/certs/cert7_london_ds-1.jpg' %}" alt="Data Science Profession Certificate" loading="lazy" />
             </div>
             <div class="cert-info">
               <p class="cert-issuer">University of London / Coursera</p>
@@ -577,7 +582,7 @@ else:
 
           <div class="cert-card reveal" style="--tint:#e8dddd" data-url="https://coursera.org/verify/PR63VASYEIS4">
             <div class="cert-img-wrap">
-              <img src="assets/certs/cert8_colorado_crypto-1.jpg" alt="Asymmetric Cryptography Certificate" loading="lazy" />
+              <img src="{% static 'main/assets/certs/cert8_colorado_crypto-1.jpg' %}" alt="Asymmetric Cryptography Certificate" loading="lazy" />
             </div>
             <div class="cert-info">
               <p class="cert-issuer">U. of Colorado / Coursera</p>
@@ -696,15 +701,20 @@ else:
       5. form.js     → initForm()
       6. main.js     → calls all of the above
   -->
-  <script src="js/theme.js"></script>
-  <script src="js/navbar.js"></script>
-  <script src="js/reveal.js"></script>
-  <script src="js/parallax.js"></script>
-  <script src="js/form.js"></script>
-  <script src="js/scrolltell.js"></script>
-  <script src="js/laptop.js"></script>
-  <script src="js/terminal.js"></script>
-  <script src="js/main.js"></script>
+    <!-- External Frameworks for Animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <script src="{% static 'main/js/animations.js' %}"></script>
+  <script src="{% static 'main/js/theme.js' %}"></script>
+  <script src="{% static 'main/js/navbar.js' %}"></script>
+  <script src="{% static 'main/js/reveal.js' %}"></script>
+  <script src="{% static 'main/js/parallax.js' %}"></script>
+  <script src="{% static 'main/js/form.js' %}"></script>
+  <script src="{% static 'main/js/scrolltell.js' %}"></script>
+  <script src="{% static 'main/js/laptop.js' %}"></script>
+  <script src="{% static 'main/js/terminal.js' %}"></script>
+  <script src="{% static 'main/js/main.js' %}"></script>
 
 
     <!-- ══════════════════════════════════════════════════════════
@@ -715,7 +725,7 @@ else:
     </div>
 
         <div id="linux-desktop" style="display: none;">
-                  <video class="linux-wallpaper-video" src="assets/videos/wallpaper.mp4" autoplay loop muted playsinline></video>
+                  <video class="linux-wallpaper-video" src="{% static 'main/assets/videos/wallpaper.mp4' %}" autoplay loop muted playsinline></video>
       <div class="linux-wallpaper-overlay"></div>
       
       <!-- Top Bar (Hyprland / Waybar style) -->
@@ -848,7 +858,7 @@ else:
           <div class="win-title">Projects Media Player</div>
         </div>
         <div class="window-body video-body">
-          <video src="assets/videos/aimlab.mp4" controls autoplay loop muted></video>
+          <video src="{% static 'main/assets/videos/aimlab.mp4' %}" controls autoplay loop muted></video>
         </div>
       </div>
 

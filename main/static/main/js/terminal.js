@@ -28,7 +28,16 @@ document.addEventListener("DOMContentLoaded", () => {
   function openWindow(appId) {
     const win = document.getElementById(appId);
     if (!win) return;
-    win.style.display = 'flex';
+    
+    if (win.style.display !== 'flex') {
+      win.style.display = 'flex';
+      // GSAP Spring Animation for opening window
+      if (window.gsap) {
+        gsap.set(win, { scale: 0.7, opacity: 0, clearProps: "xPercent,yPercent,x,y" });
+        gsap.to(win, { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.2)" });
+      }
+    }
+    
     bringToFront(win);
     
     // Update dock
@@ -45,10 +54,22 @@ document.addEventListener("DOMContentLoaded", () => {
   function closeWindow(appId) {
     const win = document.getElementById(appId);
     if (win) {
-      win.style.display = 'none';
       if (win.classList.contains('active-win')) {
         const titleEl = document.getElementById('topbar-title');
         if (titleEl) titleEl.textContent = 'Desktop';
+      }
+      
+      // GSAP Animation for closing window
+      if (window.gsap) {
+        gsap.to(win, { 
+          scale: 0.8, opacity: 0, duration: 0.2, ease: "power2.in",
+          onComplete: () => { 
+            win.style.display = 'none'; 
+            gsap.set(win, { scale: 1, opacity: 1 }); // reset
+          } 
+        });
+      } else {
+        win.style.display = 'none';
       }
     }
     const dockIcon = document.querySelector(`.dock-icon[data-app="${appId}"]`);
@@ -147,8 +168,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!viewer || !title || !iframe) return;
 
     let url = '';
-    if (filename === 'resume.pdf') url = 'assets/Vansh_Poonia_Resume.pdf';
-    else if (filename.includes('.jpg')) url = 'assets/certs/' + filename;
+    if (filename === 'resume.pdf') url = '/static/main/assets/Vansh_Poonia_Resume.pdf';
+    else if (filename.includes('.jpg')) url = '/static/main/assets/certs/' + filename;
     else url = filename;
 
     title.textContent = `Viewing: ${filename}`;

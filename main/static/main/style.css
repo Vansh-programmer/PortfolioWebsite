@@ -1236,3 +1236,52 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   border-radius: 999px;
 }
 :hover::-webkit-scrollbar-thumb { background: var(--color-line); }
+
+/* ── Custom Cursor ──────────────────────────────────────────── */
+.cursor-dot, .cursor-outline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 99999;
+  pointer-events: none;
+  /* Hide native cursor completely on desktop if we wanted, but keeping native for safety. Actually let's hide it: */
+}
+body {
+  cursor: none;
+}
+a, button, .dock-icon, .gui-window, .theme-btn, .file-item, input, textarea {
+  cursor: none !important;
+}
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--color-accent);
+}
+.cursor-outline {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--color-accent);
+  transition: width 0.2s, height 0.2s, background 0.2s, opacity 0.2s;
+  opacity: 0.5;
+}
+
+/* Hover state classes added by JS */
+.cursor-hover .cursor-outline {
+  width: 60px;
+  height: 60px;
+  background: var(--color-accent);
+  border-color: transparent;
+  opacity: 0.15;
+}
+.cursor-hover .cursor-dot {
+  transform: translate(-50%, -50%) scale(0.5);
+}
+
+/* Fallback for mobile devices - hide custom cursor */
+@media (max-width: 768px) {
+  .cursor-dot, .cursor-outline { display: none; }
+  body, a, button, .dock-icon, .gui-window, .theme-btn { cursor: auto !important; }
+}
