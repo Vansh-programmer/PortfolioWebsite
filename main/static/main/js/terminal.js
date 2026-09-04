@@ -283,7 +283,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return curr;
   }
 
-  function executeCommand(cmdStr) {
+  async function executeCommand(cmdStr) {
     const args = cmdStr.trim().split(' ').filter(x => x);
     if (args.length === 0) return;
     const cmd = args[0];
@@ -291,12 +291,6 @@ document.addEventListener("DOMContentLoaded", () => {
     printOut(`<span style="color:#87d700">${getPrompt()}</span> ` + cmdStr, true);
 
     switch(cmd) {
-      case 'sudo':
-        printOut(`vansh_poonia is not in the sudoers file. This incident will be reported.`);
-        break;
-      case 'help':
-        printOut("Commands: \n ls       : list files\n cd <dir> : change directory\n cat <file>: read a file\n open <file>: open a GUI application\n pwd      : print working directory\n whoami   : current user intro\n clear    : clear screen\n exit     : close terminal");
-        break;
       case 'whoami':
         printOut("I'm Vansh. I learn by building things.\nI got into coding because I wanted to understand how video games work.\nNow, I build web apps with Django and Flask, create Linux TUIs, and write scripts to automate my daily tasks.");
         break;
@@ -380,9 +374,26 @@ document.addEventListener("DOMContentLoaded", () => {
         break;
       }
       default:
-        if (cmd.startsWith('./')) {
-          printOut(`bash: ${cmd}: No such file or directory`);
-        } else {
+        // Try Django Backend API for unknown commands (like ai, whois, sudo hire)
+        const loadingId = 'loading-' + Date.now();
+        printOut(`<span id="${loadingId}" style="color: #f1fa8c;">[Django Backend] Processing...</span>`, true);
+        
+        try {
+          const response = await fetch('/api/terminal/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ command: cmdStr })
+          });
+          const data = await response.json();
+          document.getElementById(loadingId).remove();
+          
+          if (data.status === 'success') {
+            printOut(data.output);
+          } else {
+            printOut(`bash: ${cmd}: command not found`);
+          }
+        } catch (e) {
+          document.getElementById(loadingId).remove();
           printOut(`bash: ${cmd}: command not found`);
         }
     }

@@ -75,6 +75,7 @@
           <button class="theme-btn"        data-theme="linux"  title="Linux mode"  aria-pressed="false">🐧</button>
         </div>
 
+        <a href="{% static 'main/assets/Vansh_Poonia_Resume.pdf' %}" class="nav-cta" style="background: transparent; color: var(--color-text); border: 1px solid var(--color-text); margin-right: 10px;" target="_blank" download>Resume</a>
         <a href="#contact" class="nav-cta">Get in touch</a>
       </div>
 
@@ -98,6 +99,7 @@
       <a href="#skills"       class="mobile-link">Skills</a>
       <a href="#showcase"     class="mobile-link">Work</a>
       <a href="#certificates" class="mobile-link">Certificates</a>
+      <a href="{% static 'main/assets/Vansh_Poonia_Resume.pdf' %}" class="mobile-link" target="_blank" download style="color: var(--color-accent); font-weight: bold;">Download Resume</a>
       <a href="#contact"      class="mobile-link mobile-cta">Get in touch</a>
     </div>
   </header>
@@ -137,7 +139,7 @@
             <a href="#showcase" class="btn-primary">
               View work <span class="btn-arrow">→</span>
             </a>
-            <a href="assets/Vansh_Poonia_Resume.pdf" target="_blank" class="btn-text">Download résumé ↗</a>
+            <a href="{% static 'main/assets/Vansh_Poonia_Resume.pdf' %}" target="_blank" download class="btn-text">Download résumé ↗</a>
           </div>
 
           <div class="hero-stats" aria-label="Quick facts">
@@ -350,11 +352,11 @@
                 <div style="position: relative; width: 100%; height: 100%; min-height: 100%; background: #000; border-bottom: 1px solid #333;">
                   
                   <!-- Corner Links -->
-                  <a href="https://github.com/Vansh-programmer/TicketBookApp" target="_blank" style="position: absolute; top: 1rem; right: 1rem; background: rgba(0,0,0,0.6); color: #fff; padding: 0.5rem 1rem; border-radius: 8px; font-weight: bold; text-decoration: none; z-index: 10; font-size: 0.85rem; border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(4px);">
+                  <a href="https://github.com/Vansh-programmer/TicketBookApp" target="_blank" download style="position: absolute; top: 1rem; right: 1rem; background: rgba(0,0,0,0.6); color: #fff; padding: 0.5rem 1rem; border-radius: 8px; font-weight: bold; text-decoration: none; z-index: 10; font-size: 0.85rem; border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(4px);">
                     GitHub ↗
                   </a>
                   
-                  <a href="https://aucinebook.netlify.app/" target="_blank" style="position: absolute; bottom: 1.5rem; right: 1.5rem; background: var(--color-accent); color: #fff; padding: 0.6rem 1.2rem; border-radius: 999px; font-weight: bold; text-decoration: none; z-index: 10; font-size: 0.95rem; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+                  <a href="https://aucinebook.netlify.app/" target="_blank" download style="position: absolute; bottom: 1.5rem; right: 1.5rem; background: var(--color-accent); color: #fff; padding: 0.6rem 1.2rem; border-radius: 999px; font-weight: bold; text-decoration: none; z-index: 10; font-size: 0.95rem; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
                     Open Live Demo ↗
                   </a>
 
@@ -619,14 +621,14 @@ else:
                   <span class="ci-val">vanshpooniag@gmail.com</span>
                 </div>
               </a>
-              <a href="https://www.linkedin.com/in/vanshpoonia/" target="_blank" rel="noopener noreferrer" class="contact-item">
+              <a href="https://www.linkedin.com/in/vanshpoonia/" target="_blank" download rel="noopener noreferrer" class="contact-item">
                 <span class="ci-icon">in</span>
                 <div>
                   <span class="ci-label">LinkedIn</span>
                   <span class="ci-val">linkedin.com/in/vanshpoonia</span>
                 </div>
               </a>
-              <a href="https://github.com/Vansh-programmer" target="_blank" rel="noopener noreferrer" class="contact-item">
+              <a href="https://github.com/Vansh-programmer" target="_blank" download rel="noopener noreferrer" class="contact-item">
                 <span class="ci-icon">gh</span>
                 <div>
                   <span class="ci-label">GitHub</span>
@@ -682,8 +684,8 @@ else:
         Designed &amp; built by <strong>Vansh Poonia</strong> &copy; <span id="year"></span>
       </p>
       <div class="footer-socials">
-        <a href="https://github.com/Vansh-programmer"   target="_blank" rel="noopener noreferrer" aria-label="GitHub">GH</a>
-        <a href="https://www.linkedin.com/in/vanshpoonia/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LI</a>
+        <a href="https://github.com/Vansh-programmer"   target="_blank" download rel="noopener noreferrer" aria-label="GitHub">GH</a>
+        <a href="https://www.linkedin.com/in/vanshpoonia/" target="_blank" download rel="noopener noreferrer" aria-label="LinkedIn">LI</a>
       </div>
     </div>
   </footer>
