@@ -116,23 +116,21 @@ function aboutPinnedChapters() {
       html: `
         <div class="container about-grid">
           <div class="about-text" style="max-width:600px">
-            <p class="section-label">Chapter 1 — Who I am</p>
+            <p class="section-label">Chapter 1 — Background</p>
             <h2 class="section-heading" style="font-size:clamp(1.8rem,3.5vw,2.8rem)">
-              A developer who cares about the <span class="marker">whole product</span>.
+              How I got <span class="marker">started</span>.
             </h2>
             <p style="color:var(--color-ink-soft);line-height:1.7;margin-bottom:1rem">
-              I'm a full-stack developer who turns ideas into fast, reliable web apps—
-              from database schema all the way to a polished, accessible interface.
+              I started coding because I played video games as a kid and wanted to know how they worked. 
             </p>
             <p style="color:var(--color-ink-soft);line-height:1.7">
-              I build with the MERN stack and care deeply about clean architecture,
-              secure authentication, and actually shipping to production.
+              I taught myself how to program so I could build my own tools. Today, I focus on learning by building real projects.
             </p>
           </div>
           <div class="about-visual" aria-hidden="true">
             <div class="about-card">
               <div class="about-photo-wrap">
-                <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=500&fit=crop&auto=format&q=75" alt="Coding setup" loading="lazy" />
+                <img src="assets/images/vansh.jpg" alt="Coding setup" loading="lazy" />
               </div>
               <div class="about-tag hand">currently building</div>
             </div>
@@ -145,7 +143,7 @@ function aboutPinnedChapters() {
         <div class="container" style="max-width:700px">
           <p class="section-label">Chapter 2 — Experience</p>
           <h2 class="section-heading" style="font-size:clamp(1.8rem,3.5vw,2.8rem)">
-            Real projects. <em>Real code shipped.</em>
+            My main <em>skills.</em>
           </h2>
           <div class="experience-list" style="margin-top:1rem;border-top:1px solid var(--color-line);padding-top:1.5rem;display:flex;flex-direction:column;gap:1.25rem">
             <div class="exp-item" style="border-left:2px solid var(--color-accent);padding-left:1rem">
@@ -172,11 +170,10 @@ function aboutPinnedChapters() {
         <div class="container" style="text-align:center;max-width:600px;margin:0 auto">
           <p class="section-label">Chapter 3 — Now</p>
           <h2 class="section-heading" style="font-size:clamp(1.8rem,3.5vw,2.8rem)">
-            Open for new <em>adventures</em>.
+            What I'm <em>doing now</em>.
           </h2>
           <p style="color:var(--color-ink-soft);line-height:1.7;margin-bottom:2.5rem">
-            I'm actively looking for roles where I can ship real product,
-            learn fast, and work with a team that gives a damn.
+            I spend my time shipping projects across different stacks. Whether it's configuring a Linux server, writing Python scripts, or building web apps with Flask and Django, I just love making things that work.
           </p>
           <a href="#contact" class="btn-primary" style="display:inline-flex;align-items:center;gap:.5rem;background:var(--color-ink);color:var(--color-paper);border-radius:999px;padding:.85rem 2rem;font-size:1rem;font-weight:600;text-decoration:none">
             Let's talk <span>→</span>
