@@ -1,0 +1,300 @@
+/* ============================================================
+   scrolltell.css — Scrollytelling 2.0
+   Cinematic scroll-driven effects layered over the base styles.
+   Load LAST so these rules can override base component styles.
+============================================================ */
+
+/* ────────────────────────────────────────────────────────────
+   1. SIDE CHAPTER NAV — floating dots on the right
+──────────────────────────────────────────────────────────── */
+#st-nav {
+  position: fixed;
+  right: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+@media (max-width: 48rem) { #st-nav { display: none; } }
+
+.st-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-muted);
+  background: transparent;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.22,1,0.36,1),
+              background 0.3s,
+              border-color 0.3s;
+  position: relative;
+}
+.st-dot::after {
+  content: attr(data-label);
+  position: absolute;
+  right: 1.4rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--color-ink-soft);
+  white-space: nowrap;
+  background: var(--color-card);
+  border: 1px solid var(--color-line);
+  border-radius: 6px;
+  padding: 0.2rem 0.55rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+.st-dot:hover::after    { opacity: 1; }
+.st-dot.active {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  transform: scale(1.75);
+}
+
+/* ────────────────────────────────────────────────────────────
+   2. HERO — word-split reveal
+──────────────────────────────────────────────────────────── */
+.st-word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  line-height: inherit;
+}
+.st-word-inner {
+  display: inline-block;
+  transform: translateY(108%);
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--st-delay, 0s);
+}
+.hero-heading.st-triggered .st-word-inner { transform: translateY(0); }
+
+/* Hero exits — parallax fade when scrolling past */
+.hero-text,
+.hero-photo { will-change: opacity, transform; }
+
+/* ────────────────────────────────────────────────────────────
+   3. ABOUT — pinned narrative chapters
+──────────────────────────────────────────────────────────── */
+.st-about-pin-wrap {
+  /* Height is set by JS based on number of chapters */
+  position: relative;
+}
+.st-about-sticky {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+/* Chapter panels stacked */
+.st-chapter-panel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(48px);
+  transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1),
+              transform 0.65s cubic-bezier(0.22,1,0.36,1);
+  pointer-events: none;
+}
+.st-chapter-panel.is-active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.st-chapter-panel.is-past {
+  opacity: 0;
+  transform: translateY(-48px);
+}
+
+/* Chapter progress pip at bottom of sticky area */
+.st-chapter-pips {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+}
+.st-pip {
+  width: 28px; height: 3px;
+  border-radius: 99px;
+  background: var(--color-line);
+  transition: background 0.4s;
+}
+.st-pip.active { background: var(--color-accent); }
+
+/* ────────────────────────────────────────────────────────────
+   4. SKILLS — mastery bars
+──────────────────────────────────────────────────────────── */
+.skill-bar-track {
+  height: 3px;
+  background: var(--color-line);
+  border-radius: 99px;
+  margin-top: 1.1rem;
+  overflow: hidden;
+}
+.skill-bar-fill {
+  height: 100%;
+  width: 0;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-teal));
+  transition: width 1.3s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--st-delay, 0s);
+}
+
+/* ────────────────────────────────────────────────────────────
+   5. LAPTOP — cinematic lid-open on scroll
+──────────────────────────────────────────────────────────── */
+.laptop-lid.st-lid-init {
+  transform: rotateX(65deg) !important;
+  opacity: 0.2;
+  transition: none;
+}
+.laptop-lid.st-lid-open {
+  transform: rotateX(-2deg) !important;
+  opacity: 1;
+  transition: transform 1.6s cubic-bezier(0.22,1,0.36,1),
+              opacity 0.8s ease;
+}
+
+/* ────────────────────────────────────────────────────────────
+   6. CERTIFICATES — horizontal film strip
+──────────────────────────────────────────────────────────── */
+.cert-film-outer {
+  position: relative;
+  /* height set by JS: viewport-height × multiplier */
+}
+
+.cert-film-sticky {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Sprocket rail top & bottom */
+.cert-film-sticky::before,
+.cert-film-sticky::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  height: 1.25rem;
+  z-index: 2;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent     0 1.4rem,
+    var(--color-line) 1.4rem 1.9rem,
+    transparent     1.9rem 3.2rem
+  );
+  opacity: 0.5;
+}
+.cert-film-sticky::before { top: 0; }
+.cert-film-sticky::after  { bottom: 0; }
+
+.cert-film-track {
+  display: flex;
+  gap: 2rem;
+  padding: 0 8vw;
+  will-change: transform;
+}
+
+/* Film-strip card (replaces cert-card inside strip) */
+.cert-film-card {
+  flex-shrink: 0;
+  width: clamp(350px, 45vw, 600px);
+  background: var(--color-card);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.22,1,0.36,1),
+              box-shadow 0.4s;
+}
+.cert-film-card:hover {
+  transform: scale(1.04);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+}
+.cert-film-card .cert-img-wrap { aspect-ratio: 4/3; }
+.cert-film-card .cert-img-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: grayscale(0%);
+  transition: filter 0.5s, transform 0.5s;
+}
+.cert-film-card:hover .cert-img-wrap img { transform: scale(1.03); }
+
+/* ────────────────────────────────────────────────────────────
+   7. CINEMATIC WIPE — clip-path slide reveal
+──────────────────────────────────────────────────────────── */
+.st-wipe {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 1.1s cubic-bezier(0.77, 0, 0.175, 1);
+  transition-delay: var(--st-delay, 0s);
+}
+.st-wipe.st-in { clip-path: inset(0 0% 0 0); }
+
+/* ────────────────────────────────────────────────────────────
+   8. GENERIC DATA-ST ENTER ANIMATIONS
+──────────────────────────────────────────────────────────── */
+[data-st="fade-up"] {
+  opacity: 0;
+  transform: translateY(56px);
+  transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1),
+              transform 0.9s cubic-bezier(0.22,1,0.36,1);
+  transition-delay: var(--st-delay, 0s);
+}
+[data-st="fade-right"] {
+  opacity: 0;
+  transform: translateX(-56px);
+  transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1),
+              transform 0.9s cubic-bezier(0.22,1,0.36,1);
+  transition-delay: var(--st-delay, 0s);
+}
+[data-st="fade-left"] {
+  opacity: 0;
+  transform: translateX(56px);
+  transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1),
+              transform 0.9s cubic-bezier(0.22,1,0.36,1);
+  transition-delay: var(--st-delay, 0s);
+}
+[data-st="scale-in"] {
+  opacity: 0;
+  transform: scale(0.82);
+  transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1),
+              transform 0.9s cubic-bezier(0.22,1,0.36,1);
+  transition-delay: var(--st-delay, 0s);
+}
+[data-st].st-in { opacity: 1; transform: none; }
+
+/* ────────────────────────────────────────────────────────────
+   9. SECTION BG MORPH — decorative overlay
+──────────────────────────────────────────────────────────── */
+#st-morph-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: transparent;
+  transition: background 1.2s cubic-bezier(0.22,1,0.36,1);
+  mix-blend-mode: multiply;
+  opacity: 0.15;
+}
+
+/* Reduce motion — all transitions cut to 0 */
+@media (prefers-reduced-motion: reduce) {
+  .st-word-inner,
+  .st-chapter-panel,
+  .laptop-lid.st-lid-open,
+  [data-st],
+  .st-wipe,
+  .skill-bar-fill { transition: none !important; }
+}

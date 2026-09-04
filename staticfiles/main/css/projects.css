@@ -1,0 +1,368 @@
+/* ============================================================
+   projects.css — Interactive 3D Laptop Showcase
+   WASD-controlled laptop showing project pages.
+============================================================ */
+
+.showcase-section {
+  background: var(--color-sand);
+  overflow: hidden;
+}
+
+.laptop-wrapper {
+  max-width: 1300px;
+  margin: 2rem auto 4rem;
+  padding: 0 1.5rem;
+  perspective: 1200px;
+}
+
+/* ── 1. The Screen (Lid) ────────────────────────────────────── */
+.laptop-lid {
+  background: #111;
+  border-radius: 16px;
+  padding: 2.5%;
+  box-shadow:
+    0 0 0 2px #222,
+    inset 0 0 0 2px #000;
+  position: relative;
+  z-index: 10;
+  transform-origin: bottom;
+  /* Very slight tilt away from user */
+  transform: rotateX(-2deg);
+}
+
+.laptop-camera {
+  position: absolute;
+  top: 1.25%; left: 50%;
+  transform: translateX(-50%);
+  width: 6px; height: 6px;
+  background: #222;
+  border-radius: 50%;
+  box-shadow: inset 0 0 2px #000;
+}
+
+.laptop-screen-content {
+  background: var(--color-paper);
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  position: relative;
+  border-radius: 4px;
+}
+
+.laptop-track {
+  display: flex;
+  height: 100%;
+  /* Transition handles horizontal scrolling smoothly */
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+/* ── 2. Inside the Screen (Projects) ────────────────────────── */
+.laptop-slide {
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  background: var(--color-card);
+}
+.laptop-slide::-webkit-scrollbar { display: none; /* Chrome/Safari */ }
+
+.slide-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.slide-details {
+  padding: 2rem;
+}
+
+.slide-meta {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 0.5rem;
+}
+
+.slide-title {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  color: var(--color-ink);
+  line-height: 1.2;
+}
+
+.slide-desc {
+  font-size: 0.95rem;
+  color: var(--color-ink-soft);
+  margin: 1rem 0;
+  line-height: 1.6;
+}
+
+.slide-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.slide-tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 0.2rem 0.6rem;
+  background: var(--color-sand);
+  border: 1px solid var(--color-line);
+  border-radius: 6px;
+  color: var(--color-ink-soft);
+}
+
+/* ── 3. The Keyboard Base (Deck) ────────────────────────────── */
+.laptop-deck {
+  background: linear-gradient(135deg, #2a2a2a, #111);
+  border-radius: 0 0 24px 24px;
+  padding: 3rem 4rem 2rem;
+  /* Perspective tilt to lay flat towards user */
+  transform-origin: top;
+  transform: rotateX(45deg);
+  box-shadow: 0 40px 50px rgba(0,0,0,0.5);
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  border-top: 1px solid #333;
+}
+
+/* Base notch */
+.laptop-deck::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 8px;
+  background: #1a1a1a;
+  border-radius: 0 0 8px 8px;
+  box-shadow: inset 0 2px 4px #000;
+}
+
+.deck-keyboard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  background: #141414;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #222;
+  box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
+  width: 90%;
+  max-width: 650px;
+}
+
+.key-row {
+  display: flex;
+  gap: 0.25rem;
+  justify-content: space-between;
+}
+
+.key {
+  flex: 1;
+  height: 2.25rem;
+  background: #1a1a1a;
+  border: 1px solid #000;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: #555;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.05),
+    0 2px 0 #050505,
+    0 3px 3px rgba(0,0,0,0.4);
+  transition: transform 0.1s, box-shadow 0.1s, color 0.1s, background 0.1s, border-color 0.1s;
+}
+
+/* WASD are visually highlighted even when not pressed */
+.key.highlight {
+  border-color: color-mix(in srgb, var(--color-accent) 50%, transparent);
+  color: var(--color-accent);
+  background: #1e1e1e;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.1),
+    0 2px 0 #050505,
+    0 3px 3px rgba(0,0,0,0.4),
+    0 0 6px color-mix(in srgb, var(--color-accent) 15%, transparent);
+  font-weight: bold;
+}
+
+/* Active/Pressed state for WASD */
+.key.pressed {
+  transform: translateY(2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.05),
+    0 0px 0 #050505,
+    0 1px 1px rgba(0,0,0,0.4);
+  background: var(--color-accent);
+  color: var(--color-paper);
+  border-color: var(--color-accent);
+}
+
+/* Sizing for specific keys to make the layout look authentic */
+.key-space { flex: 6; }
+.key-tab { flex: 1.5; }
+.key-caps { flex: 1.8; }
+.key-enter { flex: 2.2; }
+.key-shift { flex: 2.5; }
+.key-shift-r { flex: 2.5; }
+.key-del { flex: 1.5; }
+.key-cmd { flex: 1.2; }
+.key-arrows { flex: 2; font-size: 0.5rem; letter-spacing: 2px; }
+
+.deck-trackpad {
+  width: 35%;
+  height: 60px;
+  background: rgba(0,0,0,0.25);
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.05);
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.5);
+}
+
+.laptop-instructions {
+  text-align: center;
+  margin-top: 3rem;
+  font-size: 0.95rem;
+  color: var(--color-ink-soft);
+}
+.laptop-instructions strong {
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+}
+
+/* Scroll Indicators in HTML */
+.scroll-hint {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  margin-top: 1rem;
+  font-family: var(--font-mono);
+}
+
+/* ── AI Mock Terminal (Slide 4) ────────────────────────────── */
+.mock-terminal-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #111;
+  font-family: 'JetBrains Mono', var(--font-mono, monospace);
+  font-size: 0.8rem;
+  color: #fff;
+  border-bottom: 1px solid #333;
+}
+.mock-term-header {
+  display: flex;
+  align-items: center;
+  background: #222;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #333;
+  position: relative;
+}
+.mock-term-header .dots {
+  display: flex;
+  gap: 6px;
+}
+.mock-term-header .dot {
+  width: 10px; height: 10px; border-radius: 50%;
+}
+.dot.red { background: #ff5f56; }
+.dot.yellow { background: #ffbd2e; }
+.dot.green { background: #27c93f; }
+
+.mock-term-header .title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #888;
+  font-size: 0.75rem;
+}
+
+.mock-term-body {
+  padding: 1rem;
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.term-line {
+  line-height: 1.4;
+  word-break: break-all;
+}
+.term-line .prompt {
+  color: #87d700;
+  margin-right: 0.5rem;
+}
+.term-line.error {
+  color: #ff5f56;
+}
+.ai-box {
+  background: rgba(135, 215, 0, 0.1);
+  border-left: 2px solid #87d700;
+  padding: 0.8rem 1rem;
+  margin-top: 0.2rem;
+  border-radius: 0 8px 8px 0;
+}
+.ai-badge {
+  display: inline-block;
+  background: #87d700;
+  color: #000;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.ollama-badge {
+  background: #fff;
+}
+.ai-box p {
+  margin: 0 0 0.4rem 0;
+  color: #ddd;
+}
+.ai-box code {
+  background: rgba(255,255,255,0.1);
+  padding: 2px 4px;
+  border-radius: 3px;
+  color: #87d700;
+}
+.ai-box pre {
+  background: #000;
+  padding: 0.8rem;
+  border-radius: 6px;
+  border: 1px solid #333;
+  overflow-x: auto;
+  margin: 0.5rem 0 0 0;
+}
+.ai-box pre code {
+  background: transparent;
+  padding: 0;
+  color: #ccc;
+}
+
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 14px;
+  background: #87d700;
+  vertical-align: middle;
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
