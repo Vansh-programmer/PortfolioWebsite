@@ -368,8 +368,25 @@
                   <div class="slide-tags">
                     <span class="slide-tag">Expo</span><span class="slide-tag">Firebase</span><span class="slide-tag">Gemini AI</span>
                   </div>
-                  <p class="scroll-hint" style="margin-top: 2rem;">↓ Use W/A/S/D to slide between projects ↓</p>
-                  <div style="height: 100px;"></div>
+                  <p class="scroll-hint" style="margin-top: 2rem;">↓ scroll for technical breakdown ↓</p>
+                  <div class="project-explanation" style="margin-top: 1rem; color: var(--color-text); font-size: 0.95rem; max-width: 800px; padding-bottom: 4rem;">
+                    <h4 style="color: var(--color-accent); margin-bottom: 1rem; font-size: 1.2rem;">Architecture & Frameworks</h4>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div style="margin-bottom: 1rem; padding-left: 0.5rem; border-left: 1px solid rgba(255,255,255,0.2);">
+                            <strong style="color: #fff; font-size: 1.05rem;">Frontend (Expo)</strong><br>
+                            Built as a cross-platform Progressive Web App. Implements interactive UI components like a 2D seat selection grid using array-based state matrices to track booked vs. available seats in real-time.
+                        </div>
+                        <div style="margin-bottom: 1rem; padding-left: 0.5rem; border-left: 1px solid rgba(255,255,255,0.2);">
+                            <strong style="color: #fff; font-size: 1.05rem;">Backend (Firebase Firestore)</strong><br>
+                            Uses Firebase Firestore for NoSQL data syncing. When a user books a seat, a transaction is securely written to the cloud, instantly reflecting the updated seat map across all connected clients via WebSocket listeners.
+                        </div>
+                        <div style="margin-bottom: 1rem; padding-left: 0.5rem; border-left: 1px solid rgba(255,255,255,0.2);">
+                            <strong style="color: #fff; font-size: 1.05rem;">AI Integration (Google Gemini API)</strong><br>
+                            Leverages the <code>@google/generative-ai</code> SDK. User preferences and watch history are fed into the LLM as context prompts via REST API POST requests to dynamically generate highly personalized, conversational movie recommendations.
+                        </div>
+                    </div>
+                  </div>
+
                 </div>
               </div>
 
@@ -395,15 +412,15 @@
                     <h4 style="color: var(--color-accent); margin-bottom: 1rem; font-size: 1.2rem;">Key Findings & Mathematical Concepts</h4>
                     
                     <ul style="list-style-type: none; padding: 0; margin-bottom: 2rem; display: flex; flex-direction: column; gap: 1rem;">
-                      <li style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px; line-height: 1.5;">
+                      <li style="margin-bottom: 1rem; padding-left: 0.5rem; border-left: 1px solid rgba(255,255,255,0.2); line-height: 1.5;">
                         <strong style="color: #fff; font-size: 1.05rem;">1. Multiple Linear Regression & Polynomials</strong><br>
                         Initially, sensitivity had a U-shaped residual error. By squaring the sensitivity parameter (<code style="color: #ffb86c; background: rgba(0,0,0,0.3); padding: 0.1rem 0.3rem; border-radius: 4px;">sens²</code>), we modeled the non-linear curve, mathematically proving that TTK improves up to ~89.7 cm/360 before dropping off.
                       </li>
-                      <li style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px; line-height: 1.5;">
+                      <li style="margin-bottom: 1rem; padding-left: 0.5rem; border-left: 1px solid rgba(255,255,255,0.2); line-height: 1.5;">
                         <strong style="color: #fff; font-size: 1.05rem;">2. Partial F-Tests & Adjusted R²</strong><br>
                         Using an F-Test, we proved that FOV and Crosshair Scale together have a statistically significant impact on aim. The Adjusted R² metric penalized adding useless noise variables, confirming our final 4-term model was mathematically optimal.
                       </li>
-                      <li style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px; line-height: 1.5;">
+                      <li style="margin-bottom: 1rem; padding-left: 0.5rem; border-left: 1px solid rgba(255,255,255,0.2); line-height: 1.5;">
                         <strong style="color: #fff; font-size: 1.05rem;">3. Multicollinearity (VIF) & Leverage Outliers</strong><br>
                         Testing a 200 cm/360 sensitivity run acted as a massive leverage outlier, breaking the linear model. We also observed a high Variance Inflation Factor (VIF = 24) between <code style="color: #ffb86c; background: rgba(0,0,0,0.3); padding: 0.1rem 0.3rem; border-radius: 4px;">sens</code> and <code style="color: #ffb86c; background: rgba(0,0,0,0.3); padding: 0.1rem 0.3rem; border-radius: 4px;">sens²</code>, which inflated standard errors but maintained high predictive accuracy.
                       </li>
@@ -435,8 +452,24 @@
                   <div class="slide-tags">
                     <span class="slide-tag">Arduino</span><span class="slide-tag">C++</span><span class="slide-tag">Sensors</span>
                   </div>
-                  <p class="scroll-hint">↓ scroll for more details ↓</p>
-                  <div style="height: 150px;"></div>
+                  <p class="scroll-hint" style="margin-top: 2rem;">↓ scroll for technical breakdown ↓</p>
+                  <div class="project-explanation" style="margin-top: 1rem; color: var(--color-text); font-size: 0.95rem; max-width: 800px; padding-bottom: 4rem;">
+                    <h4 style="color: var(--color-accent); margin-bottom: 1rem; font-size: 1.2rem;">Hardware Integration & Logic</h4>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div style="margin-bottom: 1rem; padding-left: 0.5rem; border-left: 1px solid rgba(255,255,255,0.2);">
+                            <strong style="color: #fff; font-size: 1.05rem;">Microcontroller (Arduino Uno)</strong><br>
+                            Programmed in embedded C++. The core <code>loop()</code> runs continuously, triggering digital pin reads at specific clock intervals (using <code>millis()</code> instead of <code>delay()</code> to prevent processor blocking).
+                        </div>
+                        <div style="margin-bottom: 1rem; padding-left: 0.5rem; border-left: 1px solid rgba(255,255,255,0.2);">
+                            <strong style="color: #fff; font-size: 1.05rem;">Sensor Data Parsing (DHT11)</strong><br>
+                            Interfaces with a DHT sensor. The C++ code reads raw analog pulse widths, performs bitwise shifting to convert the pulses into binary data, and calculates precise Temperature and Humidity floats.
+                        </div>
+                        <div style="margin-bottom: 1rem; padding-left: 0.5rem; border-left: 1px solid rgba(255,255,255,0.2);">
+                            <strong style="color: #fff; font-size: 1.05rem;">LCD Display (I2C Protocol)</strong><br>
+                            Instead of messy parallel wiring, it utilizes the I2C serial protocol (<code>Wire.h</code>). This compresses the display output into just two pins (SDA/SCL), pushing string-formatted byte arrays to an external 16x2 LCD module.
+                        </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -480,8 +513,24 @@ else:
                   <div class="slide-tags">
                     <span class="slide-tag">Python</span><span class="slide-tag">Ollama</span><span class="slide-tag">Bash</span><span class="slide-tag">TUI</span>
                   </div>
-                  <p class="scroll-hint" style="margin-top: 2rem;">↓ scroll for more details ↓</p>
-                  <div style="height: 150px;"></div>
+                  <p class="scroll-hint" style="margin-top: 2rem;">↓ scroll for technical breakdown ↓</p>
+                  <div class="project-explanation" style="margin-top: 1rem; color: var(--color-text); font-size: 0.95rem; max-width: 800px; padding-bottom: 4rem;">
+                    <h4 style="color: var(--color-accent); margin-bottom: 1rem; font-size: 1.2rem;">System Architecture</h4>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div style="margin-bottom: 1rem; padding-left: 0.5rem; border-left: 1px solid rgba(255,255,255,0.2);">
+                            <strong style="color: #fff; font-size: 1.05rem;">Terminal User Interface (TUI)</strong><br>
+                            Built in Python using advanced terminal rendering libraries (like Textual/Rich). It takes over the standard console to draw interactive borders, syntax-highlighted code blocks, and dynamic input fields.
+                        </div>
+                        <div style="margin-bottom: 1rem; padding-left: 0.5rem; border-left: 1px solid rgba(255,255,255,0.2);">
+                            <strong style="color: #fff; font-size: 1.05rem;">Local AI Integration (Ollama)</strong><br>
+                            When a user types an <code>ask</code> command, Python intercepts it and communicates locally with an Ollama endpoint (running Llama 3 or similar). This allows code generation securely on-device without relying on paid cloud APIs.
+                        </div>
+                        <div style="margin-bottom: 1rem; padding-left: 0.5rem; border-left: 1px solid rgba(255,255,255,0.2);">
+                            <strong style="color: #fff; font-size: 1.05rem;">Subprocess Command Execution</strong><br>
+                            Python utilizes the <code>subprocess</code> module to pipe safe bash commands directly to the underlying Linux OS. It captures `stdout` and `stderr` streams, allowing the AI to read errors and automatically suggest corrections for mistyped commands.
+                        </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -500,7 +549,24 @@ else:
                   <div style="margin-top: 1.5rem;">
                     <a href="https://github.com/Vansh-programmer/Catch-The-Book" target="_blank" style="display: inline-block; padding: 0.5rem 1rem; background: rgba(255,255,255,0.1); color: var(--color-text); text-decoration: none; border-radius: 4px; border: 1px solid rgba(255,255,255,0.2); transition: 0.2s;">View on GitHub ↗</a>
                   </div>
-                  <div style="height: 150px;"></div>
+                  <p class="scroll-hint" style="margin-top: 2rem;">↓ scroll for technical breakdown ↓</p>
+                  <div class="project-explanation" style="margin-top: 1rem; color: var(--color-text); font-size: 0.95rem; max-width: 800px; padding-bottom: 4rem;">
+                    <h4 style="color: var(--color-accent); margin-bottom: 1rem; font-size: 1.2rem;">Game Engine Mechanics</h4>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div style="margin-bottom: 1rem; padding-left: 0.5rem; border-left: 1px solid rgba(255,255,255,0.2);">
+                            <strong style="color: #fff; font-size: 1.05rem;">The Game Loop</strong><br>
+                            The core of the game is a continuous <code>while running:</code> loop. It processes user events (keyboard input), updates object coordinates (gravity/movement), and renders the new frame 60 times per second using <code>pygame.time.Clock()</code>.
+                        </div>
+                        <div style="margin-bottom: 1rem; padding-left: 0.5rem; border-left: 1px solid rgba(255,255,255,0.2);">
+                            <strong style="color: #fff; font-size: 1.05rem;">Collision Detection</strong><br>
+                            Utilizes <code>pygame.Rect.colliderect()</code>. Every sprite (the player, the books, the falling mobiles) is mapped to an invisible bounding box. If the player's box intersects with a book's box, score increments; if it intersects with a mobile, a life is lost.
+                        </div>
+                        <div style="margin-bottom: 1rem; padding-left: 0.5rem; border-left: 1px solid rgba(255,255,255,0.2);">
+                            <strong style="color: #fff; font-size: 1.05rem;">Audio Processing</strong><br>
+                            Game state events trigger specific audio assets via <code>pygame.mixer</code>. It runs an asynchronous background music track (<code>ftd_background_music.wav</code>) while instantly layering sound effects over top (<code>bonus.wav</code>, <code>miss_sound.wav</code>) upon collisions.
+                        </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
